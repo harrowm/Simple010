@@ -34,7 +34,7 @@ LCSC numbers are for JLCPCB ordering. Mouser numbers are for Mouser ordering.
 | Ref | Value | LCSC | Mouser | Datasheet |
 |-----|-------|------|--------|-----------|
 | SW1 | XKB TS-1187A-B-A-B — 5.1×5.1mm SMD tact switch | C318884 | — | [TS-1187A_SW1.pdf](TS-1187A_SW1.pdf) |
-| J3 | USB-C receptacle 16P — Jing Extension USB-TYPE-C-005 | C230736 | — | *see note* |
+| J3 | Korean Hroparts TYPE-C-31-M-12 — USB-C receptacle 16P | C165948 | — | [TYPE-C-31-M-12_USB-C.pdf](TYPE-C-31-M-12_USB-C.pdf) |
 
 ## Passives (0805, Yageo/KEMET/Samsung)
 
@@ -55,10 +55,6 @@ LCSC numbers are for JLCPCB ordering. Mouser numbers are for Mouser ordering.
 ---
 
 ## Notes
-
-**USB-C connector (J3, C230736):** This is the Jing Extension USB-TYPE-C-005, a 16-pin USB 2.0 USB-C receptacle. The datasheet is not available for direct download outside of an LCSC browser session. Download it from: https://lcsc.com/product-detail/C230736.html
-
-**Mouser number for J3:** The schematic records Mouser=649-10118192-0001LF (Amphenol Micro USB B) — this appears to be an error. The actual part is the USB-C connector LCSC C230736. Verify before ordering from Mouser.
 
 **ATF1508AS LCSC:** The ATF1508AS-15JU84 (PLCC84, 5V, 15ns) is not stocked on LCSC/JLCPCB. Order directly from Microchip or via a distributor such as Mouser (556-AF1508AS15JU84) or DigiKey.
 
