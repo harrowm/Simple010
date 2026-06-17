@@ -1,0 +1,702 @@
+// rosco_m68k r2 CPLD replacement — ATF1508AS PLCC84
+//
+// Replaces: IC2 ADDRESS_DECODER, IC3 DUART_SEL, IC5 GLUE_LOGIC,
+//           IC6 WATCHDOG, IC4 XR68C681 DUART (UART A only, fixed 115200 8N1),
+//           IC7 74LS148 interrupt priority encoder
+//
+// Clocks:
+//   SYS_CLK  (pin 83) 68010 system clock  — watchdog, boot flag, HALT/RESET regs
+//   UART_CLK (pin 81) 3.6864 MHz osc      — UART baud (3686400/32 = 115200)
+//
+// Memory map (identical to r2):
+//   $000000-$0FFFFF  1MB  RAM (even/odd)
+//   $100000-$DFFFFF  13MB Expansion
+//   $E00000-$EFFFFF  1MB  ROM (even/odd)
+//   $F00000-$FFFFFF  IO   → UART at $F00000, A1-A4 select register
+//
+// UART register map (compatible with XR68C681 addresses):
+//   A4:A3:A2:A1 = 0001  (offset $02)  SRA   read  — status A
+//   A4:A3:A2:A1 = 0011  (offset $06)  RBA   read  — rx buffer A
+//   A4:A3:A2:A1 = 0011  (offset $06)  TBA   write — tx buffer A
+//   A4:A3:A2:A1 = 1100  (offset $18)  IVR   r/w   — interrupt vector (0x0F at reset for fw detection)
+//   A4:A3:A2:A1 = 1101  (offset $1A)  IP    read  — input port (MISO on bit 2)
+//   A4:A3:A2:A1 = 1110  (offset $1C)  SETCMD  write — assert output bits (pin low)
+//   A4:A3:A2:A1 = 1111  (offset $1E)  RESETCMD write — deassert output bits (pin high)
+//   A4:A3:A2:A1 = 0010  (offset $04)  CPLDID  read  — capability byte (see below); write ignored
+//   A4:A3:A2:A1 = 0100  (offset $08)  SPIRX   write — trigger one hardware SPI byte receive
+//   A4:A3:A2:A1 = 0100  (offset $08)  SPIRX   read  — received byte (valid when SRA bit 2 = 0)
+//   SRA (offset $02) bit 2 = spi_busy — 1 while hardware SPI in progress (was 0 on XR68C681)
+//   all other addresses: silently ACK'd, no BERR
+//
+// CPLD detection / capability register (CPLDID, offset $04):
+//   The real XR68C681 maps $04 to CRA (Command Register A), which is WRITE-ONLY.
+//   Reads of a write-only register return 0xFF or 0x00 (bus float / undefined).
+//   The CPLD returns a fixed capability byte here instead, allowing firmware to
+//   detect the CPLD and its features with a single read — no write required.
+//
+//   Bit 7 (0x80): CPLD present                (always 1 in this bitstream)
+//   Bit 6 (0x40): HW SPI RX accelerator        (1 = SPIRX register at $08 is available)
+//   Bit 5-2     : reserved, read as 0
+//   Bit 1-0     : bitstream version             (01 = initial release)
+//
+//   Value = 0xC1  (CPLD + SPI accel + version 1)
+//
+//   Firmware usage:
+//     uint8_t cap = *(volatile uint8_t*)0xF00004;
+//     if (cap == 0xC1) { /* CPLD with HW SPI — use SPIRX accelerator */ }
+//     else             { /* original XR68C681 — use bit-bang SPI     */ }
+
+`default_nettype none
+
+module cpld (
+    // — Clocks —
+    input         SYS_CLK,
+
+    // — 68010 address bus —
+    // Note: A6-A17 not connected on revised board (simplified uart_sel no
+    // longer needs them; freed those CPLD pins for IRQ/IPL signals below).
+    input         A1, A2, A3, A4,
+    input         A18, A19, A20, A21, A22, A23,
+
+    // — 68010 bus control —
+    input         AS, RW, UDS, LDS,
+    input         FC0, FC1, FC2,
+
+    // — Hardware reset (active low pushbutton) —
+    input         HWRST,
+
+    // — Open-drain bus signals —
+    output        HALT,
+    output        RESET,
+    inout         DTACK,
+    inout         BERR,
+
+    // — Memory chip selects (active low) —
+    output        nEVENRAMSEL,
+    output        nODDRAMSEL,
+    output        nEVENROMSEL,
+    output        nODDROMSEL,
+    output        nEXPSEL,
+
+    // — External DTACK from expansion bus —
+    input         LGEXP,
+
+    // — Misc —
+    output        WR,
+    output        nIOSEL,   // I/O range select ($F00000-$FFFFFF) — for expansion cards
+
+    // — CPU data bus (bidirectional, for UART register access) —
+    inout  [7:0]  D,
+
+    // — UART A —
+    input         UART_CLK,    // 3.6864 MHz crystal oscillator
+    output        TXA,
+    input         RXA,
+
+    // — SPI / GPIO output port (XR68C681 OP bit mapping) —
+    output        SPI_MOSI,    // OP6
+    input         SPI_MISO,    // IP2
+    output        SPI_SCK,     // OP4
+    output        SPI_nCS,     // OP2
+    output        SPI_nCS1,    // OP7
+    output        LED_RED,     // OP3
+    output        LED_GREEN,   // OP5
+
+    // — Interrupt priority encoder (replaces IC7 74LS148) —
+    // Expansion bus IRQ lines, active low, open-collector from expansion cards.
+    // Pull-up resistors to +5V are REQUIRED on the board — the ATF1508AS has
+    // no internal pull-ups.  These correspond to the r2 pull-up network:
+    //   nIRQ2 — R15 (4.7kΩ to VCC)
+    //   nIRQ3 — R16 (4.7kΩ to VCC)
+    //   nIRQ5 — R18 (4.7kΩ to VCC)
+    //   nIRQ6 — R17 (4.7kΩ to VCC)
+    // The UART interrupt (formerly DUAIRQ / R12) is sourced internally from
+    // rx_ready and does not require an external pin or pull-up resistor.
+    input         nIRQ2,
+    input         nIRQ3,
+    input         nIRQ5,
+    input         nIRQ6,
+
+    // 68010 interrupt priority lines, active low (connect directly to CPU IPL2-0)
+    output        IPL2,
+    output        IPL1,
+    output        IPL0
+);
+
+// ============================================================
+// GLUE LOGIC (IC5)
+// ============================================================
+
+// CPU space: FC = 111
+wire cpu_space = FC2 & FC1 & FC0;
+
+// HALT and RESET: driven low (open-drain) during reset pulse.
+// halt_rel/reset_rel reset to 0 (uses global GCLRn — free fanin).
+// Released (set to 1) on first SYS_CLK after HWRST goes high.
+// (* keep *) prevents Yosys 0.66 from merging halt_rel/reset_rel into a single FF.
+// When merged, dfflibmap creates a floating ENA net (no driver) that crashes the fitter.
+(* keep *) reg halt_rel, reset_rel;
+always @(posedge SYS_CLK or negedge HWRST) begin
+    if (!HWRST) begin
+        halt_rel  <= 1'b0;
+        reset_rel <= 1'b0;
+    end else begin
+        halt_rel  <= 1'b1;
+        reset_rel <= 1'b1;
+    end
+end
+assign HALT  = halt_rel  ? 1'bz : 1'b0;
+assign RESET = reset_rel ? 1'bz : 1'b0;
+
+// CPUSP: HIGH for all normal supervisor/user accesses (FC != 111).
+// Matches IC5 GAL output: /CPUSP = /HWRST * FC2 * FC1 * FC0 drives pin HIGH when
+// FC != 111, LOW during CPU-space (interrupt-ack) cycles. IC2 uses CPUSP active-high
+// to gate RAM/ROM/EXP/IO — so those are accessible for normal accesses, blocked during IACK.
+wire cpusp = ~cpu_space;
+
+// BOOT flag: booted=0 after reset (boot mode, GCLRn), 1 after first ROM fetch (normal mode).
+// boot_r = booted: 0 in boot mode, 1 in normal mode — matches IC2 BOOT polarity:
+//   BOOT=0: RAM reads restricted to upper area, ROM shadow at $000000 active
+//   BOOT=1: RAM fully open, ROM shadow gone
+wire rom_fetch = FC2 & ~FC1 & FC0 & A23 & A22 & A21 & ~A20;
+reg booted;
+always @(posedge SYS_CLK or negedge HWRST) begin
+    if (!HWRST)
+        booted <= 1'b0;
+    else if (rom_fetch)
+        booted <= 1'b1;
+end
+wire boot_r = booted;  // 0 = boot mode, 1 = normal (matches IC2 BOOT signal)
+
+// ============================================================
+// ADDRESS DECODER (IC2)
+// ============================================================
+
+wire ram_range = ~A23 & ~A22 & ~A21 & ~A20;
+
+// Even RAM: supervisor, UDS asserted, RAM range
+// In BOOT mode: allow all reads (ROM shadowed elsewhere, RAM always accessible)
+// Normal mode: enable for writes, or if A19 or A18 set (upper 768K of 1MB)
+assign nEVENRAMSEL = ~(cpusp & ~AS & ~UDS & ram_range &
+                       (boot_r | A19 | A18 | ~RW));
+
+assign nODDRAMSEL  = ~(cpusp & ~AS & ~LDS & ram_range &
+                       (boot_r | A19 | A18 | ~RW));
+
+// Pre-decode upper address bits
+wire addr_hi_1110 = A23 & A22 & A21 & ~A20;   // $E00000 (ROM)
+
+// ROM: real address $E00000, plus boot-time read shadow at $000000 low 256K
+assign nEVENROMSEL = ~(cpusp & ~AS & ~UDS & (
+                        addr_hi_1110 |
+                        (ram_range & ~A19 & ~A18 & RW & ~boot_r)));
+
+assign nODDROMSEL  = ~(cpusp & ~AS & ~LDS & (
+                        addr_hi_1110 |
+                        (ram_range & ~A19 & ~A18 & RW & ~boot_r)));
+
+// Expansion: supervisor access that is none of RAM/ROM/IO
+assign nEXPSEL = ~(cpusp & ~AS & (
+                    (A23 & ~A21)   |
+                    (~A23 & A22)   |
+                    (~A23 & A20)   |
+                    (~A22 & A21)   ));
+
+assign WR = ~RW;
+
+// I/O range select: $F00000-$FFFFFF, supervisor only. Matches original IC2 GAL.
+// Driven out on nIOSEL for expansion cards; also used internally as uart_sel base.
+wire io_sel  = cpusp & A23 & A22 & A21 & A20;
+assign nIOSEL = ~io_sel;
+
+// ============================================================
+// DUART SELECT (IC3)
+// uart_sel responds to any supervisor byte access in $F00000-$FFFFFF.
+// A full decode would also check A5-A19=0 (narrowing to $F00000-$F0001F),
+// but that expanded uart_sel to 22 literals, causing fanin overflow in
+// every block that used it (OPR/tx_buf FFs each inherited all 22 signals).
+// The relaxed decode is safe because: (a) the firmware only accesses the
+// known register offsets ($02,$06,$18,$1A,$1C,$1E) which all have A5-A19=0
+// so behaviour is identical for all legitimate accesses; (b) nothing else
+// occupies $F00000-$FFFFFF so there is no aliasing conflict with other
+// devices; (c) ~LDS is retained so odd-byte cycles are still ignored.
+// ============================================================
+wire uart_sel = io_sel & ~LDS;
+
+// ============================================================
+// DTACK
+// ============================================================
+
+assign DTACK = (~nEVENRAMSEL | ~nODDRAMSEL |
+                ~nEVENROMSEL | ~nODDROMSEL |
+                (~nEXPSEL & LGEXP)          |
+                uart_sel) ? 1'b0 : 1'bz;
+
+// ============================================================
+// WATCHDOG (IC6)  — clocked by SYS_CLK
+// ============================================================
+
+reg [2:0] ax;       // prescaler
+reg [3:0] wdq;      // watchdog count
+reg       pberr;    // pending bus error
+
+// Watchdog enabled when AS asserted and not a CPU-space+A19 access
+wire wden = ~AS | (~cpusp & A19);
+
+always @(posedge SYS_CLK or negedge HWRST) begin
+    if (!HWRST) begin
+        ax    <= 3'd0;
+        wdq   <= 4'd0;
+        pberr <= 1'b0;
+    end else begin
+        ax[0] <= ~ax[0];
+        ax[1] <=  ax[0] ^ ax[1];
+        ax[2] <= (ax[1] & ax[0]) ^ ax[2];
+
+        if (wden) begin
+            wdq <= wdq + 1'b1;
+            if (&wdq) pberr <= 1'b1;
+        end else begin
+            wdq   <= 4'd0;
+            pberr <= 1'b0;
+        end
+    end
+end
+assign BERR = pberr ? 1'b0 : 1'bz;
+
+// ============================================================
+// UART A — fixed 115200 8N1, clocked by UART_CLK (3.6864 MHz)
+// ============================================================
+
+// --- Baud prescaler: /32 gives 115200 Hz bit clock ---
+// baud_ctr is a free-running counter — no reset needed in hardware.
+// The = 5'd0 initialiser is simulation-only; Yosys ignores it for synthesis
+// so no GCLRn load is added (keeping UART_CLK off the dedicated global clock pins).
+reg [4:0] baud_ctr = 5'd0;
+(* keep *) wire bit_en  = (baud_ctr == 5'd31);
+// samp_en: 16x oversampling strobe — fires every 2 UART_CLK cycles.
+// baud_ctr[0] is correct but as a direct combinational fan-out it overloads
+// routing and forces UART_CLK onto a dedicated global clock pin (wrong PCB pin).
+// Registering it through samp_en_r lets the fitter place it freely as a FF,
+// relieving routing pressure while preserving the correct 16 samples/bit rate.
+// The 1-cycle delay shifts the sample point by 2 UART_CLK cycles — still well
+// within the mid-bit window (bit period = 32 UART_CLK cycles).
+reg samp_en_r = 1'b0;
+
+always @(posedge UART_CLK) begin
+    baud_ctr  <= baud_ctr + 1'b1;
+    samp_en_r <= baud_ctr[0];
+end
+
+// --- TX ---
+// tx_busy=0 at reset (uses global GCLRn — free fanin).
+// tx_shreg resets to 0; idle line is forced high by tx_busy=0 condition.
+reg [7:0] tx_shreg;
+reg [3:0] tx_bctr;
+reg       tx_busy;   // 0=idle, 1=transmitting
+reg [7:0] tx_buf;
+// SYS_CLK→UART_CLK handshake for tx_load:
+//   SYNTHESIS: 1-SYS_CLK pulse (~124 ns). In hardware with independent crystals
+//   the firmware polls TXRDY between writes, so timing is reliable.
+//   Zero extra logic; keeps MC count low enough for the fitter to honour //PIN: constraints.
+//   SIMULATION (iverilog -DSIMULATION): tx_load held until tx_busy goes high, so
+//   the testbench reliably triggers TX regardless of deterministic clock phase.
+reg       tx_load;           // SYS_CLK domain
+
+assign TXA = (~tx_busy)           ? 1'b1 :   // idle: mark high
+             (tx_bctr == 4'd0)    ? 1'b0 :   // start bit
+             (tx_bctr == 4'd9)    ? 1'b1 :   // stop bit
+             tx_shreg[0];
+
+always @(posedge UART_CLK or negedge HWRST) begin
+    if (!HWRST) begin
+        tx_busy  <= 1'b0;
+        tx_bctr  <= 4'd0;
+        tx_shreg <= 8'h00;
+    end else begin
+        if (!tx_busy & tx_load) begin
+            tx_shreg <= tx_buf;
+            tx_busy  <= 1'b1;
+            tx_bctr  <= 4'd0;
+        end else if (tx_busy & bit_en) begin
+            if (tx_bctr == 4'd9) begin
+                tx_busy <= 1'b0;
+            end else begin
+                tx_bctr  <= tx_bctr + 1'b1;
+                if (tx_bctr != 4'd0)      // don't shift on start→d0 transition
+                    tx_shreg <= {1'b1, tx_shreg[7:1]};
+            end
+        end
+    end
+end
+
+// --- RX ---
+// All FFs reset to 0 → use global GCLRn (free fanin).
+// rx_seen_high tracks that line was idle (high) before treating low as start bit.
+reg [7:0] rx_shreg;
+reg [3:0] rx_bctr;
+reg [3:0] rx_sctr;
+reg       rx_busy;    // 0=idle (was rx_idle inverted)
+reg       rx_ready;
+reg       rx_seen_high; // seen RXA=1; resets to 0 (uses GCLRn)
+// SYS_CLK→UART_CLK handshake for cpu_rd_rba: same SYNTHESIS/SIMULATION split.
+reg       cpu_rd_rba;          // SYS_CLK domain
+
+always @(posedge UART_CLK or negedge HWRST) begin
+    if (!HWRST) begin
+        rx_busy      <= 1'b0;
+        rx_ready     <= 1'b0;
+        rx_seen_high <= 1'b0;
+        rx_bctr      <= 4'd0;
+        rx_sctr      <= 4'd0;
+    end else begin
+        if (!rx_busy) begin
+            if (RXA) rx_seen_high <= 1'b1;
+            // Detect start bit: RXA low after we've seen it high, no unread byte
+            if (rx_seen_high & ~RXA & ~rx_ready) begin
+                rx_busy      <= 1'b1;
+                rx_seen_high <= 1'b0;
+                rx_sctr      <= 4'd0;
+                rx_bctr      <= 4'd0;
+            end
+        end else if (samp_en_r) begin
+            rx_sctr <= rx_sctr + 1'b1;
+            if (rx_sctr == 4'd7) begin
+                if (rx_bctr == 4'd0) begin
+                    if (RXA) rx_busy <= 1'b0;  // false start, abort
+                    else      rx_bctr <= 4'd1;
+                end else if (rx_bctr <= 4'd8) begin
+                    rx_shreg <= {RXA, rx_shreg[7:1]};
+                    rx_bctr  <= rx_bctr + 1'b1;
+                end else begin
+                    rx_ready <= 1'b1;
+                    rx_busy  <= 1'b0;
+                    rx_bctr  <= 4'd0;
+                end
+            end
+        end
+        if (cpu_rd_rba) rx_ready <= 1'b0;
+    end
+end
+
+// ============================================================
+// GPIO / Output Port  (XR68C681 OP0-OP7 compatible)
+// Only the 5 bits used by firmware are stored; unused bits ignored.
+// opr_n bit=0 → pin driven LOW (active-low); inverted sense vs XR68C681.
+// Stored inverted so all bits reset to 0 (uses global GCLRn — saves fanin).
+// SETCMD clears the bit (drives pin low); RESETCMD sets it (drives high).
+// ============================================================
+
+reg opr2n, opr3n, opr4n, opr5n, opr6n, opr7n;
+// SPI regs declared here to avoid forward references in SPI_SCK assign and dbus_out mux
+reg        spi_busy;
+reg        spi_clk_div;
+reg [2:0]  spi_bit_ctr;
+reg [7:0]  spi_rx_shreg;
+reg        spi_busy_s0, spi_busy_s1;
+assign SPI_nCS   = ~opr2n;
+assign LED_RED   = ~opr3n;
+assign SPI_SCK   = spi_busy ? spi_clk_div : ~opr4n;
+assign LED_GREEN = ~opr5n;
+assign SPI_MOSI  = ~opr6n;
+assign SPI_nCS1  = ~opr7n;
+
+// IVR: read-only constant 0x0F — firmware uses this to detect CPLD vs original DUART.
+// No register needed; saves 8 FFs (all had reset-to-1 bits, couldn't use GCLRn).
+localparam IVR_VAL = 8'h0f;
+
+// ============================================================
+// CPU bus write interface — SYS_CLK domain
+// ============================================================
+
+wire [3:0] reg_sel = {A4, A3, A2, A1};
+wire uart_rd = uart_sel & ~AS & RW;
+wire uart_wr = uart_sel & ~AS & ~RW;
+
+always @(posedge SYS_CLK or negedge HWRST) begin
+    if (!HWRST) begin
+        // All reset to 0 — uses global GCLRn (free fanin, no product term for HWRST)
+        {opr7n, opr6n, opr5n, opr4n, opr3n, opr2n} <= 6'b000000;
+        tx_buf     <= 8'h00;
+        tx_load    <= 1'b0;
+        cpu_rd_rba <= 1'b0;
+    end else begin
+`ifdef SIMULATION
+        // In simulation (iverilog -DSIMULATION): hold signals until UART_CLK acks.
+        // Deterministic clock phases can cause a 1-cycle pulse to always be missed.
+        if (tx_busy)                tx_load    <= 1'b0;
+        if (cpu_rd_rba & ~rx_ready) cpu_rd_rba <= 1'b0;
+`else
+        // In synthesis: standard 1-SYS_CLK pulse — minimal logic, correct pin placement.
+        tx_load    <= 1'b0;
+        cpu_rd_rba <= 1'b0;
+`endif
+
+        if (uart_wr) begin
+            case (reg_sel)
+                4'b0011: begin tx_buf <= D; tx_load <= 1'b1; end  // TBA
+                // IVR write ignored (read-only constant)
+                4'b1110: begin                                       // SETCMD: drive pin low → set opr_n
+                    opr2n <= opr2n | D[2];
+                    opr3n <= opr3n | D[3];
+                    opr4n <= opr4n | D[4];
+                    opr5n <= opr5n | D[5];
+                    opr6n <= opr6n | D[6];
+                    opr7n <= opr7n | D[7];
+                end
+                4'b1111: begin                                       // RESETCMD: drive pin high → clear opr_n
+                    opr2n <= opr2n & ~D[2];
+                    opr3n <= opr3n & ~D[3];
+                    opr4n <= opr4n & ~D[4];
+                    opr5n <= opr5n & ~D[5];
+                    opr6n <= opr6n & ~D[6];
+                    opr7n <= opr7n & ~D[7];
+                end
+                default: ;
+            endcase
+        end
+        if (uart_rd && reg_sel == 4'b0011)
+            cpu_rd_rba <= 1'b1;
+    end
+end
+
+// Read data mux
+// status_a: bit4=TXRDY, bit0=RXRDY (matches XR68C681 SRA layout)
+// iport: bit2=MISO (matches XR68C681 IP layout)
+reg [7:0] dbus_out;
+always @(*) begin
+    case (reg_sel)
+        4'b0001: dbus_out = {3'b0, ~tx_busy, 1'b0, spi_busy_s1, 1'b0, rx_ready};
+        4'b0010: dbus_out = 8'hC1;        // CPLDID: capability byte (CPLD+SPI accel, version 1)
+        4'b0011: dbus_out = rx_shreg;   // RBA: use shift reg directly (stable when rx_idle=1)
+        4'b0100: dbus_out = spi_rx_shreg; // SPIRX: received byte (read after spi_busy_s1 clears)
+        4'b1100: dbus_out = IVR_VAL;
+        4'b1101: dbus_out = {5'b0, SPI_MISO, 2'b0};
+        default: dbus_out = 8'h00;
+    endcase
+end
+assign D = uart_rd ? dbus_out : 8'hzz;
+
+// ============================================================
+// INTERRUPT PRIORITY ENCODER (IC7 — 74LS148 replacement)
+// ============================================================
+// Encodes up to 6 active-low interrupt request lines into the
+// 3-bit active-low IPL encoding the 68010 expects on IPL2-IPL0.
+// Priority matches the original 74LS148 wiring (higher level = higher priority):
+//
+//   Source    Level  74LS148 input  IPL2-0 when active
+//   -------   -----  -------------  ------------------
+//   nIRQ6     6      I6             001
+//   nIRQ5     5      I5             010
+//   UART RX   4      I4 (DUAIRQ)   011   ← internal, no external pin
+//   nIRQ3     3      I3             100
+//   nIRQ2     2      I2             101
+//   (none)    0      —              111   no interrupt
+//
+// Levels 1 and 7 are not used (I0, I1, I7 were tied to VCC on the r2 board).
+//
+// IMPORTANT: nIRQ2/3/5/6 are open-collector lines from expansion cards.
+// External pull-up resistors are required — the CPLD has no internal pull-ups:
+//   nIRQ2 → R15 (4.7kΩ to VCC)
+//   nIRQ3 → R16 (4.7kΩ to VCC)
+//   nIRQ5 → R18 (4.7kΩ to VCC)
+//   nIRQ6 → R17 (4.7kΩ to VCC)
+// ============================================================
+reg [2:0] ipl_r;
+always @(*) begin
+    // Highest priority checked first — casez first-match wins.
+    // Each pattern masks lower-priority inputs with '?' so they don't affect the match.
+    casez ({nIRQ6, nIRQ5, ~rx_ready, nIRQ3, nIRQ2})
+        5'b0????: ipl_r = 3'b001; // IRQ6 active → level 6 (highest)
+        5'b10???: ipl_r = 3'b010; // IRQ5 active, IRQ6 not → level 5
+        5'b110??: ipl_r = 3'b011; // UART active, IRQ5/6 not → level 4
+        5'b1110?: ipl_r = 3'b100; // IRQ3 active, higher not → level 3
+        5'b11110: ipl_r = 3'b101; // IRQ2 active, higher not → level 2
+        default:  ipl_r = 3'b111; // no interrupt
+    endcase
+end
+assign {IPL2, IPL1, IPL0} = ipl_r;
+
+// ============================================================
+// SPI RX ACCELERATOR — hardware-assisted SD card byte reads
+// ============================================================
+// The normal SPI path is fully bit-banged via the OPR output register
+// (SCK=OP4, MOSI=OP6, nCS=OP2, nCS1=OP7).  This block accelerates the
+// RX-only read path by having the CPLD generate SCK and capture MISO
+// automatically, reducing per-byte bus traffic from ~24 cycles to 2.
+//
+// SD CARD READS ONLY.  Write path (SD commands, data block writes) must
+// remain bit-banged.  Commands are short (6 bytes) so bit-bang overhead
+// is negligible; the bottleneck is receiving 512-byte data blocks.
+//
+// Firmware usage sequence:
+//   1.  Assert nCS as normal (SETCMD write, OP2 bit).
+//   2.  Send command/address bytes by bit-banging MOSI/SCK via OPR.
+//   3.  Receive the R1 response byte by bit-banging (SCK still OPR-driven).
+//   4.  Before starting the data block receive, ensure MOSI=1:
+//         write RESETCMD ($1E), D[6]=1  →  OP6 cleared  →  SPI_MOSI = 1
+//       (After reset SPI_MOSI is already 1 so this is only needed if a
+//        previous command left MOSI low.)
+//   5.  Wait for the SD card 0xFE data-start token using bit-bang SCK.
+//   6.  For each data byte in the block (typically 512 + 2 CRC bytes):
+//         a. Write any value to SPIRX offset $08 — triggers hardware transfer.
+//         b. Poll SRA offset $02 bit 2 until it reads 0  (spi_busy cleared).
+//         c. Read SPIRX offset $08 to obtain the received byte.
+//   7.  Deassert nCS as normal (RESETCMD write, OP2 bit).
+//
+// While spi_busy=1:
+//   - SPI_SCK is driven by the CPLD at UART_CLK/2 = 1.843 MHz.
+//   - SPI_MOSI remains under OPR control (firmware holds it high per step 4).
+//   - SPI_nCS / SPI_nCS1 remain under OPR control at all times.
+//   - Do NOT write the SPIRX trigger register again until busy clears;
+//     a write while busy is safely ignored (toggle protocol).
+//
+// Timing:
+//   SCK frequency = UART_CLK / 2 = 3.6864 MHz / 2 = 1.843 MHz
+//   Byte transfer  = 16 UART_CLK cycles ≈ 4.3 µs
+//   (vs ~25 µs per byte bit-banged at typical bus speeds)
+//   SPI mode: CPOL=0 CPHA=0 (Mode 0) — SD card default; MSB first.
+//
+// Cross-domain signalling:
+//   spi_req  toggles in SYS_CLK domain on each trigger write.
+//   UART_CLK domain synchronises with 2 FFs then detects the toggle edge.
+//   spi_busy is synchronised back to SYS_CLK domain with 2 FFs for reads.
+// ============================================================
+
+// SYS_CLK domain: toggle on each CPU trigger write to SPIRX ($08)
+reg spi_req;
+always @(posedge SYS_CLK or negedge HWRST) begin
+    if (!HWRST) spi_req <= 1'b0;
+    else if (uart_wr && reg_sel == 4'b0100) spi_req <= ~spi_req;
+end
+
+// UART_CLK domain: SPI state machine
+reg spi_req_s0, spi_req_s1, spi_req_prev;
+// spi_busy, spi_clk_div, spi_bit_ctr, spi_rx_shreg declared earlier to avoid forward refs
+
+wire spi_start = spi_req_s1 ^ spi_req_prev; // one-cycle pulse on toggle edge
+
+always @(posedge UART_CLK or negedge HWRST) begin
+    if (!HWRST) begin
+        spi_req_s0   <= 1'b0;
+        spi_req_s1   <= 1'b0;
+        spi_req_prev <= 1'b0;
+        spi_busy     <= 1'b0;
+        spi_clk_div  <= 1'b0;
+        spi_bit_ctr  <= 3'd0;
+        spi_rx_shreg <= 8'h00;
+    end else begin
+        // 2-FF synchroniser for spi_req toggle from SYS_CLK domain
+        spi_req_s0   <= spi_req;
+        spi_req_s1   <= spi_req_s0;
+        spi_req_prev <= spi_req_s1;
+
+        if (!spi_busy && spi_start) begin
+            // New transfer: SCK starts low so first toggle produces rising edge
+            spi_clk_div <= 1'b0;
+            spi_bit_ctr <= 3'd0;
+            spi_busy    <= 1'b1;
+        end else if (spi_busy) begin
+            spi_clk_div <= ~spi_clk_div;
+            if (~spi_clk_div) begin
+                // SCK rising edge (spi_clk_div was 0, now going to 1):
+                // sample MISO, shift MSB first into spi_rx_shreg
+                spi_rx_shreg <= {spi_rx_shreg[6:0], SPI_MISO};
+                spi_bit_ctr  <= spi_bit_ctr + 1'b1; // wraps 7→0 after 8th bit
+            end else if (spi_bit_ctr == 3'd0) begin
+                // SCK falling edge after the 8th bit (bit_ctr wrapped to 0):
+                // lower SCK then release to OPR control
+                spi_busy <= 1'b0;
+            end
+        end
+    end
+end
+
+// Synchronise spi_busy back to SYS_CLK domain so CPU can poll SRA bit 2.
+// spi_rx_shreg is read asynchronously — safe because the firmware protocol
+// guarantees it has been stable for many UART_CLK periods by the time the
+// CPU sees spi_busy_s1=0 and issues the SPIRX read.
+// spi_busy_s0, spi_busy_s1 declared earlier to avoid forward refs
+always @(posedge SYS_CLK or negedge HWRST) begin
+    if (!HWRST) begin
+        spi_busy_s0 <= 1'b0;
+        spi_busy_s1 <= 1'b0;
+    end else begin
+        spi_busy_s0 <= spi_busy;
+        spi_busy_s1 <= spi_busy_s0;
+    end
+end
+
+endmodule
+
+// ============================================================
+// Pin assignments — atf15xx_yosys format
+// These reflect the ACTUAL fitter output. The ATF1508AS fitter assigns both
+// clocks to dedicated GCK pins regardless of user preferences; Preassignment KEEP
+// is ignored for global control signals.  The schematic must match these pins.
+//
+// Global control pins (dedicated GCK/GCLRn inputs):
+//   HWRST    → pin 1  (GCLRn — used as async clear for all HWRST-sensitive FFs)
+//   SYS_CLK  → pin 2  (GCK   — 68010 system clock)
+//   UART_CLK → pin 83 (GCK   — 3.6864 MHz UART baud clock)
+//   pin 84   — unused (GCK4)
+//
+// JTAG: pins 14 (TDI), 23 (TMS), 62 (TCK), 71 (TDO) — left ON in this build.
+// ============================================================
+//PIN: CHIP "cpld" ASSIGNED TO AN PLCC84
+//PIN: HWRST       : 1
+//PIN: SYS_CLK     : 2
+//PIN: UART_CLK    : 83
+//PIN: A23         : 20
+//PIN: A22         : 21
+//PIN: A21         : 22
+//PIN: A20         : 6
+//PIN: A19         : 34
+//PIN: A18         : 11
+//PIN: HALT        : 80
+//PIN: RESET       : 79
+//PIN: AS          : 18
+//PIN: RW          : 17
+//PIN: UDS         : 16
+//PIN: LDS         : 12
+//PIN: FC1         : 67
+//PIN: LED_GREEN   : 48
+//PIN: nIRQ2       : 74
+//PIN: nIRQ3       : 45
+//PIN: nIRQ5       : 46
+//PIN: nIRQ6       : 44
+//PIN: LGEXP       : 75
+//PIN: A4          : 39
+//PIN: A3          : 41
+//PIN: A2          : 33
+//PIN: A1          : 40
+//PIN: D_0         : 5
+//PIN: D_1         : 25
+//PIN: D_2         : 4
+//PIN: D_3         : 24
+//PIN: D_4         : 8
+//PIN: D_5         : 28
+//PIN: D_6         : 35
+//PIN: D_7         : 27
+//PIN: BERR        : 76
+//PIN: WR          : 36
+//PIN: nIOSEL      : 10
+//PIN: TXA         : 51
+//PIN: RXA         : 52
+//PIN: SPI_MOSI    : 56
+//PIN: SPI_MISO    : 54
+//PIN: SPI_SCK     : 58
+//PIN: SPI_nCS     : 60
+//PIN: SPI_nCS1    : 63
+//PIN: LED_RED     : 49
+//PIN: nEVENRAMSEL : 31
+//PIN: nODDRAMSEL  : 30
+//PIN: nEVENROMSEL : 37
+//PIN: nODDROMSEL  : 29
+//PIN: nEXPSEL     : 9
+//PIN: DTACK       : 15
+//PIN: IPL0        : 73
+//PIN: IPL1        : 70
+//PIN: FC0         : 64
+//PIN: IPL2        : 68
+//PIN: FC2         : 65

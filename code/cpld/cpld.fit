@@ -1,0 +1,1805 @@
+Atmel ATF1508 Fitter Version 1918 ,running Wed Jun 17 13:22:34 2026
+
+
+
+
+fit1508
+-i cpld.edif
+-ifmt edif
+-o cpld.jed
+-lib Z:\Users\malcolm\atf15xx_yosys\vendor\aprim.lib
+-tech ATF1508AS
+-device PLCC84
+-tpd 15
+-Cascade_Logic ON
+-Foldback_Logic ON
+-Preassignment KEEP
+
+****** Initial fitting strategy and property ******
+ Netlist_in_file = cpld.edif
+ Netlist_out_file = cpld.tt3
+ Jedec_file = cpld.jed
+ Log_file = cpld.fit
+ Device_name = PLCC84
+ Tech_name = ATF1508AS 
+ Package_type = PLCC
+ Preassignment = try 
+ Security_mode = OFF
+ Pin-Keeper = OFF
+ supporter = ABEL
+ optimize = ON
+ Xor_synthesis = OFF
+ Foldback_logic =  on
+ Cascade_logic =  on
+ Output_fast = ON
+ SSTL_input = off
+ *******************************
+ Power down pin 1 = OFF
+ Power down pin 2 = OFF
+ power_reset = OFF
+ JTAG = ON
+ TDI pullup = OFF
+ TMS pullup = OFF
+ MC_power = OFF
+ Open_collector = OFF
+ ITD0 = ON
+ ITD1 = ON
+ ITD2 = ON
+ Fast_inlatch = off
+ TPD = 15
+ Latch_synthesis = off 
+ Push_gate = on 
+ Verilog_sim = off 
+ VHDL_sim = off 
+ Out_Edif = off 
+ Logic Doubling = off 
+ ****** End of fitting strategy and property ******
+---------------------------------------------------------
+ Fitter_Pass 1, Preassign = KEEP, LOGIC_DOUBLING : OFF 
+ ... 
+Info: cpld uses 90% of the logic resources in device PLCC84
+  If you wish to have more pins available for future logic change
+  Atmel recommends using a larger device.
+
+Performing global Output Enable pin assignments ...
+
+Performing global pin assignments ...
+--------------------------------------
+
+
+
+Final global control pins assignment (if applicable)...
+-------------------------------------------------------
+SYS_CLK assigned to pin  2
+UART_CLK assigned to pin  83
+HWRST assigned to pin  1
+
+
+
+Performing input pin pre-assignments ...
+------------------------------------
+SYS_CLK assigned to pin  2
+UART_CLK assigned to pin  83
+HWRST assigned to pin  1
+DTACK.OE equation needs patching.
+1 control equation needs patching
+
+Attempt to place floating signals ...
+------------------------------------
+id00495 is placed at feedback node 601 (MC 1)
+id00352Q is placed at feedback node 602 (MC 2)
+LDS is placed at pin 12 (MC 3)
+XXL_915 is placed at feedback node 603 (MC 3)
+id00348QN is placed at feedback node 604 (MC 4)
+A18 is placed at pin 11 (MC 5)
+id00507 is placed at feedback node 605 (MC 5)
+nIOSEL is placed at pin 10 (MC 6)
+id00435 is placed at feedback node 607 (MC 7)
+nEXPSEL is placed at pin 9 (MC 8)
+id00457 is placed at feedback node 609 (MC 9)
+id00437 is placed at feedback node 610 (MC 10)
+D_4 is placed at pin 8 (MC 11)
+id00461 is placed at feedback node 612 (MC 12)
+A20 is placed at pin 6 (MC 13)
+D_0 is placed at pin 5 (MC 14)
+XXL_922 is placed at foldback expander node 314 (MC 14)
+XXL_911 is placed at foldback expander node 315 (MC 15)
+D_2 is placed at pin 4 (MC 16)
+id00036Q is placed at foldback expander node 316 (MC 16)
+A21 is placed at pin 22 (MC 17)
+id00486 is placed at feedback node 618 (MC 18)
+FB_2_XXL_922 is placed at foldback expander node 318 (MC 18)
+A22 is placed at pin 21 (MC 19)
+id00509 is placed at feedback node 619 (MC 19)
+id00441 is placed at feedback node 620 (MC 20)
+A23 is placed at pin 20 (MC 21)
+id00058Q is placed at feedback node 621 (MC 21)
+id00498 is placed at feedback node 622 (MC 22)
+id00496 is placed at feedback node 623 (MC 23)
+AS is placed at pin 18 (MC 24)
+id00492 is placed at feedback node 624 (MC 24)
+RW is placed at pin 17 (MC 25)
+id00494 is placed at feedback node 625 (MC 25)
+id00489 is placed at feedback node 626 (MC 26)
+UDS is placed at pin 16 (MC 27)
+id00467 is placed at feedback node 627 (MC 27)
+id00490 is placed at feedback node 628 (MC 28)
+DTACK is placed at pin 15 (MC 29)
+id00463 is placed at feedback node 631 (MC 31)
+FB_2_XXL_911 is placed at foldback expander node 331 (MC 31)
+TDI is placed at pin 14 (MC 32)
+id00460 is placed at feedback node 632 (MC 32)
+FB_2_id00036Q is placed at foldback expander node 332 (MC 32)
+id00519 is placed at feedback node 633 (MC 33)
+id00484 is placed at feedback node 634 (MC 34)
+nEVENRAMSEL is placed at pin 31 (MC 35)
+id00446 is placed at feedback node 636 (MC 36)
+nODDRAMSEL is placed at pin 30 (MC 37)
+nODDROMSEL is placed at pin 29 (MC 38)
+id00497 is placed at feedback node 639 (MC 39)
+D_5 is placed at pin 28 (MC 40)
+id00459 is placed at feedback node 641 (MC 41)
+id00448 is placed at feedback node 642 (MC 42)
+D_7 is placed at pin 27 (MC 43)
+id00500 is placed at feedback node 644 (MC 44)
+D_1 is placed at pin 25 (MC 45)
+XXL_1039 is placed at foldback expander node 345 (MC 45)
+D_3 is placed at pin 24 (MC 46)
+FB_3_XXL_922 is placed at foldback expander node 346 (MC 46)
+id00504 is placed at feedback node 647 (MC 47)
+FB_3_XXL_911 is placed at foldback expander node 347 (MC 47)
+TMS is placed at pin 23 (MC 48)
+id00499 is placed at feedback node 648 (MC 48)
+id00034Q is placed at foldback expander node 348 (MC 48)
+A3 is placed at pin 41 (MC 49)
+A1 is placed at pin 40 (MC 51)
+id00508 is placed at feedback node 651 (MC 51)
+id00513 is placed at feedback node 652 (MC 52)
+A4 is placed at pin 39 (MC 53)
+id00453 is placed at feedback node 653 (MC 53)
+id00493 is placed at feedback node 654 (MC 54)
+id00111QN is placed at feedback node 655 (MC 55)
+nEVENROMSEL is placed at pin 37 (MC 56)
+WR is placed at pin 36 (MC 57)
+D_6 is placed at pin 35 (MC 59)
+A19 is placed at pin 34 (MC 61)
+id00520 is placed at feedback node 661 (MC 61)
+XXL_917 is placed at foldback expander node 362 (MC 62)
+DTACK.OE is placed at feedback node 663 (MC 63)
+FB_4_XXL_911 is placed at foldback expander node 363 (MC 63)
+A2 is placed at pin 33 (MC 64)
+id00517 is placed at feedback node 664 (MC 64)
+FB_4_id00036Q is placed at foldback expander node 364 (MC 64)
+nIRQ6 is placed at pin 44 (MC 65)
+id00100QN is placed at feedback node 665 (MC 65)
+id00432 is placed at feedback node 666 (MC 66)
+nIRQ3 is placed at pin 45 (MC 67)
+id00436 is placed at feedback node 667 (MC 67)
+id00003 is placed at feedback node 668 (MC 68)
+nIRQ5 is placed at pin 46 (MC 69)
+id00451 is placed at feedback node 669 (MC 69)
+id00447 is placed at feedback node 670 (MC 70)
+id00449 is placed at feedback node 671 (MC 71)
+LED_GREEN is placed at pin 48 (MC 72)
+LED_RED is placed at pin 49 (MC 73)
+id00445 is placed at feedback node 674 (MC 74)
+id00434 is placed at feedback node 675 (MC 75)
+XXL_987 is placed at foldback expander node 375 (MC 75)
+id00440 is placed at feedback node 676 (MC 76)
+XXL_985 is placed at foldback expander node 376 (MC 76)
+TXA is placed at pin 51 (MC 77)
+XXL_966 is placed at foldback expander node 377 (MC 77)
+id00442 is placed at feedback node 678 (MC 78)
+XXL_921 is placed at foldback expander node 378 (MC 78)
+id00438 is placed at feedback node 679 (MC 79)
+id00096Q is placed at foldback expander node 379 (MC 79)
+RXA is placed at pin 52 (MC 80)
+id00501 is placed at feedback node 680 (MC 80)
+id00083Q is placed at foldback expander node 380 (MC 80)
+XXL_912 is placed at feedback node 681 (MC 81)
+id00485 is placed at feedback node 682 (MC 82)
+SPI_MISO is placed at pin 54 (MC 83)
+id00516 is placed at feedback node 683 (MC 83)
+id00512 is placed at feedback node 684 (MC 84)
+id00452 is placed at feedback node 685 (MC 85)
+SPI_MOSI is placed at pin 56 (MC 86)
+id00506 is placed at feedback node 687 (MC 87)
+id00455 is placed at feedback node 688 (MC 88)
+id00483 is placed at feedback node 689 (MC 89)
+id00514 is placed at feedback node 690 (MC 90)
+SPI_SCK is placed at pin 58 (MC 91)
+id00510 is placed at feedback node 692 (MC 92)
+SPI_nCS is placed at pin 60 (MC 93)
+XXL_984 is placed at foldback expander node 393 (MC 93)
+id00468 is placed at feedback node 694 (MC 94)
+FB_6_XXL_917 is placed at foldback expander node 394 (MC 94)
+id00487 is placed at feedback node 695 (MC 95)
+id00279QN is placed at foldback expander node 395 (MC 95)
+TCK is placed at pin 62 (MC 96)
+id00502 is placed at feedback node 696 (MC 96)
+id00070Q is placed at foldback expander node 396 (MC 96)
+SPI_nCS1 is placed at pin 63 (MC 97)
+id00481 is placed at feedback node 698 (MC 98)
+FC0 is placed at pin 64 (MC 99)
+id00450 is placed at feedback node 699 (MC 99)
+id00480 is placed at feedback node 700 (MC 100)
+FC2 is placed at pin 65 (MC 101)
+id00478 is placed at feedback node 701 (MC 101)
+id00479 is placed at feedback node 702 (MC 102)
+id00477 is placed at feedback node 703 (MC 103)
+FC1 is placed at pin 67 (MC 104)
+id00515 is placed at feedback node 704 (MC 104)
+FB_7_id00070Q is placed at foldback expander node 404 (MC 104)
+IPL2 is placed at pin 68 (MC 105)
+id00482 is placed at feedback node 706 (MC 106)
+XXL_983 is placed at foldback expander node 406 (MC 106)
+id00073QN is placed at feedback node 707 (MC 107)
+XXL_982 is placed at foldback expander node 407 (MC 107)
+id00465 is placed at feedback node 708 (MC 108)
+XXL_967 is placed at foldback expander node 408 (MC 108)
+IPL1 is placed at pin 70 (MC 109)
+XXL_914 is placed at foldback expander node 409 (MC 109)
+id00439 is placed at feedback node 710 (MC 110)
+FB_7_id00279QN is placed at foldback expander node 410 (MC 110)
+id00505 is placed at feedback node 711 (MC 111)
+id00062QN is placed at foldback expander node 411 (MC 111)
+TDO is placed at pin 71 (MC 112)
+id00462 is placed at feedback node 712 (MC 112)
+id00466 is placed at feedback node 713 (MC 113)
+id00444 is placed at feedback node 714 (MC 114)
+IPL0 is placed at pin 73 (MC 115)
+id00476 is placed at feedback node 716 (MC 116)
+nIRQ2 is placed at pin 74 (MC 117)
+id00464 is placed at feedback node 717 (MC 117)
+LGEXP is placed at pin 75 (MC 118)
+id00443 is placed at feedback node 718 (MC 118)
+id00511 is placed at feedback node 719 (MC 119)
+BERR is placed at pin 76 (MC 120)
+id00458 is placed at feedback node 721 (MC 121)
+id00456 is placed at feedback node 722 (MC 122)
+XXL_1037 is placed at foldback expander node 422 (MC 122)
+FB_8_XXL_987 is placed at foldback expander node 423 (MC 123)
+id00433 is placed at feedback node 724 (MC 124)
+XXL_986 is placed at foldback expander node 424 (MC 124)
+RESET is placed at pin 79 (MC 125)
+XXL_972 is placed at foldback expander node 425 (MC 125)
+HALT is placed at pin 80 (MC 126)
+XXL_971 is placed at foldback expander node 426 (MC 126)
+id00454 is placed at feedback node 727 (MC 127)
+XXL_970 is placed at foldback expander node 427 (MC 127)
+id00488 is placed at feedback node 728 (MC 128)
+FB_8_XXL_914 is placed at foldback expander node 428 (MC 128)
+
+                                                         U                          
+                           n                    S        A                          
+                        n  E                    Y        R                          
+                        I  X                    S  H     T           R           L  
+                        O  P                    _  W     _        H  E        B  G  
+                     A  S  S  D  G  A  D  D  V  C  R     C  G     A  S  V     E  E  
+                     1  E  E  _  N  2  _  _  C  L  S     L  N     L  E  C     R  X  
+                     8  L  L  4  D  0  0  2  C  K  T     K  D     T  T  C     R  P  
+                 +------------------------------------------------------------------+
+                 |  11 10  9  8  7  6  5  4  3  2  1 84 83 82 81 80 79 78 77 76 75  |
+              LDS| 12                                                            74 |nIRQ2
+              VCC| 13                                                            73 |IPL0
+              TDI| 14                                                            72 |GND
+            DTACK| 15                                                            71 |TDO
+              UDS| 16                                                            70 |IPL1
+               RW| 17                                                            69 |   
+               AS| 18                                                            68 |IPL2
+              GND| 19                                                            67 |FC1
+              A23| 20                                                            66 |VCC
+              A22| 21                                                            65 |FC2
+              A21| 22                           ATF1508                          64 |FC0
+              TMS| 23                         84-Lead PLCC                       63 |SPI_nCS1
+              D_3| 24                                                            62 |TCK
+              D_1| 25                                                            61 |   
+              VCC| 26                                                            60 |SPI_nCS
+              D_7| 27                                                            59 |GND
+              D_5| 28                                                            58 |SPI_SCK
+       nODDROMSEL| 29                                                            57 |   
+       nODDRAMSEL| 30                                                            56 |SPI_MOSI
+      nEVENRAMSEL| 31                                                            55 |   
+              GND| 32                                                            54 |SPI_MISO
+                 |  33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53  |
+                 +------------------------------------------------------------------+
+                     A  A  D  W  n  V  A  A  A  G  V  n  n  n  G  L  L     T  R  V  
+                     2  1  _  R  E  C  4  1  3  N  C  I  I  I  N  E  E     X  X  C  
+                        9  6     V  C           D  C  R  R  R  D  D  D     A  A  C  
+                                 E                    Q  Q  Q     _  _              
+                                 N                    6  3  5     G  R              
+                                 R                                R  E              
+                                 O                                E  D              
+                                 M                                E                 
+                                 S                                N                 
+                                 E                                                  
+                                 L                                                  
+
+
+
+
+VCC = Supply Voltage pin for the device core
+
+GND = GND pin which must be connected to ground
+
+TMS,TDI,TDO,TDI = JTAG pins reserved for JTAG interface
+
+NC = Unused I/O pins which must be unconnected on the board
+
+Universal-Interconnect-Multiplexer assignments
+------------------------------------------------
+FanIn assignment for block A [33]
+{
+A20,A18,AS,A3,A1,A21,A23,A4,A19,A22,A2,
+D_2,D_4,D_7,
+FC2,FC0,FC1,
+LDS,
+RW,
+SPI_MISO,
+id00507,id00506,id00457,id00481,id00441,id00439,id00510,id00435,id00477,id00444,id00514,id00479,id00437,
+}
+Multiplexer assignment for block A
+A20			(MC19	P)   : MUX 0		Ref (A13p)
+A18			(MC18	P)   : MUX 1		Ref (A5p)
+id00507			(MC1	FB)  : MUX 2		Ref (A5fb)
+AS			(MC23	P)   : MUX 3		Ref (B24p)
+D_2			(MC6	P)   : MUX 4		Ref (A16p)
+A3			(MC25	P)   : MUX 5		Ref (D49p)
+D_4			(MC5	P)   : MUX 6		Ref (A11p)
+LDS			(MC17	P)   : MUX 7		Ref (A3p)
+id00506			(MC9	FB)  : MUX 8		Ref (F87fb)
+FC2			(MC32	P)   : MUX 9		Ref (G101p)
+D_7			(MC8	P)   : MUX 10		Ref (C43p)
+id00457			(MC3	FB)  : MUX 11		Ref (A9fb)
+A1			(MC26	P)   : MUX 13		Ref (D51p)
+A21			(MC20	P)   : MUX 15		Ref (B17p)
+id00481			(MC12	FB)  : MUX 16		Ref (G98fb)
+A23			(MC22	P)   : MUX 17		Ref (B21p)
+id00441			(MC7	FB)  : MUX 18		Ref (B20fb)
+FC0			(MC31	P)   : MUX 19		Ref (G99p)
+id00439			(MC15	FB)  : MUX 21		Ref (G110fb)
+id00510			(MC11	FB)  : MUX 23		Ref (F92fb)
+id00435			(MC2	FB)  : MUX 24		Ref (A7fb)
+A4			(MC27	P)   : MUX 25		Ref (D53p)
+A19			(MC28	P)   : MUX 26		Ref (D61p)
+SPI_MISO		(MC30	P)   : MUX 27		Ref (F83p)
+id00477			(MC14	FB)  : MUX 28		Ref (G103fb)
+A22			(MC21	P)   : MUX 29		Ref (B19p)
+A2			(MC29	P)   : MUX 30		Ref (D64p)
+RW			(MC24	P)   : MUX 34		Ref (B25p)
+FC1			(MC33	P)   : MUX 35		Ref (G104p)
+id00444			(MC16	FB)  : MUX 36		Ref (H114fb)
+id00514			(MC10	FB)  : MUX 37		Ref (F90fb)
+id00479			(MC13	FB)  : MUX 38		Ref (G102fb)
+id00437			(MC4	FB)  : MUX 39		Ref (A10fb)
+
+FanIn assignment for block B [37]
+{
+A20,AS,A22,A2,A21,A23,A4,A1,A3,
+D_5,D_1,DTACK.OE,D_4,D_2,D_3,D_0,D_6,
+FC1,FC0,FC2,
+LDS,
+RXA,RW,
+id00439,id00492,id00498,id00486,id00496,id00489,id00515,id00484,id00460,id00463,id00494,id00446,id00490,id00467,
+}
+Multiplexer assignment for block B
+A20			(MC24	P)   : MUX 0		Ref (A13p)
+id00439			(MC22	FB)  : MUX 1		Ref (G110fb)
+id00492			(MC7	FB)  : MUX 2		Ref (B24fb)
+D_5			(MC16	P)   : MUX 3		Ref (C40p)
+D_1			(MC17	P)   : MUX 4		Ref (C45p)
+DTACK.OE		(MC20	FB)  : MUX 5		Ref (D63fb)
+D_4			(MC1	P)   : MUX 6		Ref (A11p)
+LDS			(MC23	P)   : MUX 7		Ref (A3p)
+id00498			(MC5	FB)  : MUX 8		Ref (B22fb)
+AS			(MC28	P)   : MUX 9		Ref (B24p)
+D_2			(MC3	P)   : MUX 10		Ref (A16p)
+A22			(MC26	P)   : MUX 11		Ref (B19p)
+A2			(MC33	P)   : MUX 12		Ref (D64p)
+A21			(MC25	P)   : MUX 13		Ref (B17p)
+id00486			(MC4	FB)  : MUX 14		Ref (B18fb)
+FC1			(MC37	P)   : MUX 15		Ref (G104p)
+A23			(MC27	P)   : MUX 17		Ref (B21p)
+id00496			(MC6	FB)  : MUX 18		Ref (B23fb)
+FC0			(MC35	P)   : MUX 19		Ref (G99p)
+D_3			(MC18	P)   : MUX 20		Ref (C46p)
+id00489			(MC9	FB)  : MUX 21		Ref (B26fb)
+D_0			(MC2	P)   : MUX 22		Ref (A14p)
+FC2			(MC36	P)   : MUX 23		Ref (G101p)
+id00515			(MC21	FB)  : MUX 24		Ref (G104fb)
+A4			(MC32	P)   : MUX 25		Ref (D53p)
+D_6			(MC19	P)   : MUX 26		Ref (D59p)
+A1			(MC31	P)   : MUX 27		Ref (D51p)
+id00484			(MC14	FB)  : MUX 28		Ref (C34fb)
+id00460			(MC13	FB)  : MUX 29		Ref (B32fb)
+id00463			(MC12	FB)  : MUX 31		Ref (B31fb)
+RXA			(MC34	P)   : MUX 32		Ref (E80p)
+A3			(MC30	P)   : MUX 33		Ref (D49p)
+RW			(MC29	P)   : MUX 34		Ref (B25p)
+id00494			(MC8	FB)  : MUX 35		Ref (B25fb)
+id00446			(MC15	FB)  : MUX 36		Ref (C36fb)
+id00490			(MC11	FB)  : MUX 37		Ref (B28fb)
+id00467			(MC10	FB)  : MUX 39		Ref (B27fb)
+
+FanIn assignment for block C [37]
+{
+A3,A2,AS,A22,A21,A4,A1,A20,A23,
+D_5,D_6,
+FC2,FC0,FC1,
+LDS,
+RW,
+UDS,
+id00459,id00512,id00478,id00352Q,id00519,id00448,id00513,id00482,id00499,id00480,id00516,id00450,id00504,id00508,id00502,id00111QN,id00485,id00487,id00348QN,id00500,
+}
+Multiplexer assignment for block C
+id00459			(MC5	FB)  : MUX 1		Ref (C41fb)
+UDS			(MC30	P)   : MUX 2		Ref (B27p)
+D_5			(MC4	P)   : MUX 3		Ref (C40p)
+id00512			(MC16	FB)  : MUX 4		Ref (F84fb)
+A3			(MC31	P)   : MUX 5		Ref (D49p)
+A2			(MC34	P)   : MUX 6		Ref (D64p)
+FC2			(MC36	P)   : MUX 7		Ref (G101p)
+id00478			(MC21	FB)  : MUX 8		Ref (G101fb)
+AS			(MC28	P)   : MUX 9		Ref (B24p)
+id00352Q		(MC1	FB)  : MUX 10		Ref (A2fb)
+A22			(MC26	P)   : MUX 11		Ref (B19p)
+D_6			(MC13	P)   : MUX 12		Ref (D59p)
+A21			(MC25	P)   : MUX 13		Ref (B17p)
+id00519			(MC3	FB)  : MUX 14		Ref (C33fb)
+id00448			(MC6	FB)  : MUX 15		Ref (C42fb)
+RW			(MC29	P)   : MUX 16		Ref (B25p)
+LDS			(MC23	P)   : MUX 17		Ref (A3p)
+id00513			(MC11	FB)  : MUX 18		Ref (D52fb)
+id00482			(MC22	FB)  : MUX 19		Ref (G106fb)
+id00499			(MC9	FB)  : MUX 21		Ref (C48fb)
+id00480			(MC20	FB)  : MUX 22		Ref (G100fb)
+FC0			(MC35	P)   : MUX 23		Ref (G99p)
+id00516			(MC15	FB)  : MUX 24		Ref (F83fb)
+A4			(MC33	P)   : MUX 25		Ref (D53p)
+id00450			(MC19	FB)  : MUX 26		Ref (G99fb)
+A1			(MC32	P)   : MUX 27		Ref (D51p)
+A20			(MC24	P)   : MUX 28		Ref (A13p)
+id00504			(MC8	FB)  : MUX 29		Ref (C47fb)
+id00508			(MC10	FB)  : MUX 30		Ref (D51fb)
+A23			(MC27	P)   : MUX 31		Ref (B21p)
+id00502			(MC18	FB)  : MUX 33		Ref (F96fb)
+id00111QN		(MC12	FB)  : MUX 34		Ref (D55fb)
+FC1			(MC37	P)   : MUX 35		Ref (G104p)
+id00485			(MC14	FB)  : MUX 36		Ref (F82fb)
+id00487			(MC17	FB)  : MUX 37		Ref (F95fb)
+id00348QN		(MC2	FB)  : MUX 38		Ref (A4fb)
+id00500			(MC7	FB)  : MUX 39		Ref (C44fb)
+
+FanIn assignment for block D [37]
+{
+A20,AS,A22,A2,A21,A3,A1,A4,A23,
+D_7,
+FC0,FC2,FC1,
+LDS,LGEXP,
+RW,
+UDS,
+id00508,id00488,id00435,id00453,id00448,id00493,id00513,id00461,id00348QN,id00459,id00100QN,id00516,id00352Q,id00517,id00506,id00444,id00520,id00111QN,id00483,
+nEXPSEL,
+}
+Multiplexer assignment for block D
+D_7			(MC8	P)   : MUX 0		Ref (C43p)
+FC0			(MC34	P)   : MUX 1		Ref (G99p)
+UDS			(MC29	P)   : MUX 2		Ref (B27p)
+nEXPSEL			(MC4	P)   : MUX 3		Ref (A8p)
+id00508			(MC9	FB)  : MUX 4		Ref (D51fb)
+id00488			(MC21	FB)  : MUX 5		Ref (H128fb)
+A20			(MC23	P)   : MUX 6		Ref (A13p)
+FC2			(MC35	P)   : MUX 7		Ref (G101p)
+id00435			(MC3	FB)  : MUX 8		Ref (A7fb)
+AS			(MC27	P)   : MUX 9		Ref (B24p)
+id00453			(MC11	FB)  : MUX 10		Ref (D53fb)
+A22			(MC25	P)   : MUX 11		Ref (B19p)
+A2			(MC33	P)   : MUX 12		Ref (D64p)
+A21			(MC24	P)   : MUX 13		Ref (B17p)
+id00448			(MC7	FB)  : MUX 15		Ref (C42fb)
+id00493			(MC12	FB)  : MUX 16		Ref (D54fb)
+LDS			(MC22	P)   : MUX 17		Ref (A3p)
+id00513			(MC10	FB)  : MUX 18		Ref (D52fb)
+id00461			(MC5	FB)  : MUX 19		Ref (A12fb)
+id00348QN		(MC2	FB)  : MUX 20		Ref (A4fb)
+id00459			(MC6	FB)  : MUX 21		Ref (C41fb)
+id00100QN		(MC16	FB)  : MUX 22		Ref (E65fb)
+A3			(MC30	P)   : MUX 23		Ref (D49p)
+id00516			(MC17	FB)  : MUX 24		Ref (F83fb)
+LGEXP			(MC37	P)   : MUX 25		Ref (H118p)
+A1			(MC31	P)   : MUX 27		Ref (D51p)
+id00352Q		(MC1	FB)  : MUX 28		Ref (A2fb)
+id00517			(MC15	FB)  : MUX 29		Ref (D64fb)
+A4			(MC32	P)   : MUX 31		Ref (D53p)
+id00506			(MC18	FB)  : MUX 32		Ref (F87fb)
+A23			(MC26	P)   : MUX 33		Ref (B21p)
+RW			(MC28	P)   : MUX 34		Ref (B25p)
+FC1			(MC36	P)   : MUX 35		Ref (G104p)
+id00444			(MC20	FB)  : MUX 36		Ref (H114fb)
+id00520			(MC14	FB)  : MUX 37		Ref (D61fb)
+id00111QN		(MC13	FB)  : MUX 38		Ref (D55fb)
+id00483			(MC19	FB)  : MUX 39		Ref (F89fb)
+
+FanIn assignment for block E [29]
+{
+id00486,id00461,id00492,id00463,id00432,id00500,id00519,id00494,id00100QN,id00501,id00466,id00496,id00493,id00438,id00464,id00434,id00444,id00489,id00451,id00440,id00443,id00449,id00442,id00003,id00498,id00445,id00447,id00504,id00436,
+}
+Multiplexer assignment for block E
+id00486			(MC2	FB)  : MUX 0		Ref (B18fb)
+id00461			(MC1	FB)  : MUX 1		Ref (A12fb)
+id00492			(MC5	FB)  : MUX 2		Ref (B24fb)
+id00463			(MC8	FB)  : MUX 3		Ref (B31fb)
+id00432			(MC14	FB)  : MUX 4		Ref (E66fb)
+id00500			(MC10	FB)  : MUX 5		Ref (C44fb)
+id00519			(MC9	FB)  : MUX 6		Ref (C33fb)
+id00494			(MC6	FB)  : MUX 7		Ref (B25fb)
+id00100QN		(MC13	FB)  : MUX 8		Ref (E65fb)
+id00501			(MC25	FB)  : MUX 9		Ref (E80fb)
+id00466			(MC26	FB)  : MUX 10		Ref (H113fb)
+id00496			(MC4	FB)  : MUX 14		Ref (B23fb)
+id00493			(MC12	FB)  : MUX 16		Ref (D54fb)
+id00438			(MC24	FB)  : MUX 17		Ref (E79fb)
+id00464			(MC28	FB)  : MUX 18		Ref (H117fb)
+id00434			(MC21	FB)  : MUX 21		Ref (E75fb)
+id00444			(MC27	FB)  : MUX 22		Ref (H114fb)
+id00489			(MC7	FB)  : MUX 23		Ref (B26fb)
+id00451			(MC17	FB)  : MUX 24		Ref (E69fb)
+id00440			(MC22	FB)  : MUX 25		Ref (E76fb)
+id00443			(MC29	FB)  : MUX 26		Ref (H118fb)
+id00449			(MC19	FB)  : MUX 28		Ref (E71fb)
+id00442			(MC23	FB)  : MUX 31		Ref (E78fb)
+id00003			(MC16	FB)  : MUX 32		Ref (E68fb)
+id00498			(MC3	FB)  : MUX 34		Ref (B22fb)
+id00445			(MC20	FB)  : MUX 35		Ref (E74fb)
+id00447			(MC18	FB)  : MUX 36		Ref (E70fb)
+id00504			(MC11	FB)  : MUX 37		Ref (C47fb)
+id00436			(MC15	FB)  : MUX 38		Ref (E67fb)
+
+FanIn assignment for block F [36]
+{
+HWRST,
+SPI_MISO,
+XXL_915,XXL_912,
+id00455,id00433,id00508,id00487,id00505,id00446,id00456,id00485,id00448,id00516,id00468,id00459,id00457,id00512,id00458,id00483,id00506,id00510,id00515,id00502,id00511,id00490,id00452,id00460,id00465,id00476,id00514,id00454,id00450,id00462,id00111QN,id00437,
+}
+Multiplexer assignment for block F
+id00455			(MC17	FB)  : MUX 0		Ref (F88fb)
+SPI_MISO		(MC35	P)   : MUX 1		Ref (F83p)
+HWRST			(MC36	FB)  : MUX 2		Ref (GCLR)
+id00433			(MC33	FB)  : MUX 3		Ref (H124fb)
+id00508			(MC9	FB)  : MUX 4		Ref (D51fb)
+id00487			(MC22	FB)  : MUX 5		Ref (F95fb)
+XXL_915			(MC1	FB)  : MUX 6		Ref (A3fb)
+id00505			(MC27	FB)  : MUX 7		Ref (G111fb)
+id00446			(MC6	FB)  : MUX 8		Ref (C36fb)
+id00456			(MC32	FB)  : MUX 9		Ref (H122fb)
+id00485			(MC12	FB)  : MUX 10		Ref (F82fb)
+id00448			(MC8	FB)  : MUX 11		Ref (C42fb)
+id00516			(MC13	FB)  : MUX 12		Ref (F83fb)
+id00468			(MC21	FB)  : MUX 13		Ref (F94fb)
+id00459			(MC7	FB)  : MUX 15		Ref (C41fb)
+id00457			(MC2	FB)  : MUX 17		Ref (A9fb)
+id00512			(MC14	FB)  : MUX 18		Ref (F84fb)
+id00458			(MC31	FB)  : MUX 19		Ref (H121fb)
+XXL_912			(MC11	FB)  : MUX 20		Ref (F81fb)
+id00483			(MC18	FB)  : MUX 21		Ref (F89fb)
+id00506			(MC16	FB)  : MUX 22		Ref (F87fb)
+id00510			(MC20	FB)  : MUX 23		Ref (F92fb)
+id00515			(MC25	FB)  : MUX 24		Ref (G104fb)
+id00502			(MC23	FB)  : MUX 25		Ref (F96fb)
+id00511			(MC30	FB)  : MUX 26		Ref (H119fb)
+id00490			(MC4	FB)  : MUX 27		Ref (B28fb)
+id00452			(MC15	FB)  : MUX 28		Ref (F85fb)
+id00460			(MC5	FB)  : MUX 29		Ref (B32fb)
+id00465			(MC26	FB)  : MUX 31		Ref (G108fb)
+id00476			(MC29	FB)  : MUX 32		Ref (H116fb)
+id00514			(MC19	FB)  : MUX 33		Ref (F90fb)
+id00454			(MC34	FB)  : MUX 35		Ref (H127fb)
+id00450			(MC24	FB)  : MUX 36		Ref (G99fb)
+id00462			(MC28	FB)  : MUX 37		Ref (G112fb)
+id00111QN		(MC10	FB)  : MUX 38		Ref (D55fb)
+id00437			(MC3	FB)  : MUX 39		Ref (A10fb)
+
+FanIn assignment for block G [30]
+{
+HWRST,
+RXA,
+XXL_912,
+id00446,id00505,id00495,id00458,id00515,id00478,id00517,id00058Q,id00460,id00479,id00481,id00439,id00450,id00482,id00477,id00483,id00467,id00456,id00462,id00465,id00480,id00454,id00433,
+nIRQ6,nIRQ2,nIRQ3,nIRQ5,
+}
+Multiplexer assignment for block G
+id00446			(MC5	FB)  : MUX 0		Ref (C36fb)
+id00505			(MC19	FB)  : MUX 1		Ref (G111fb)
+id00495			(MC1	FB)  : MUX 2		Ref (A1fb)
+RXA			(MC28	P)   : MUX 4		Ref (E80p)
+id00458			(MC21	FB)  : MUX 5		Ref (H121fb)
+id00515			(MC15	FB)  : MUX 6		Ref (G104fb)
+nIRQ6			(MC25	P)   : MUX 7		Ref (E65p)
+id00478			(MC12	FB)  : MUX 8		Ref (G101fb)
+id00517			(MC6	FB)  : MUX 9		Ref (D64fb)
+id00058Q		(MC2	FB)  : MUX 10		Ref (B21fb)
+id00460			(MC4	FB)  : MUX 11		Ref (B32fb)
+nIRQ2			(MC29	P)   : MUX 13		Ref (H117p)
+id00479			(MC13	FB)  : MUX 14		Ref (G102fb)
+nIRQ3			(MC26	P)   : MUX 15		Ref (E67p)
+id00481			(MC9	FB)  : MUX 16		Ref (G98fb)
+id00439			(MC18	FB)  : MUX 17		Ref (G110fb)
+id00450			(MC10	FB)  : MUX 18		Ref (G99fb)
+id00482			(MC16	FB)  : MUX 19		Ref (G106fb)
+id00477			(MC14	FB)  : MUX 20		Ref (G103fb)
+id00483			(MC8	FB)  : MUX 21		Ref (F89fb)
+id00467			(MC3	FB)  : MUX 23		Ref (B27fb)
+HWRST			(MC30	FB)  : MUX 24		Ref (GCLR)
+id00456			(MC22	FB)  : MUX 25		Ref (H122fb)
+id00462			(MC20	FB)  : MUX 27		Ref (G112fb)
+id00465			(MC17	FB)  : MUX 29		Ref (G108fb)
+nIRQ5			(MC27	P)   : MUX 33		Ref (E69p)
+id00480			(MC11	FB)  : MUX 34		Ref (G100fb)
+id00454			(MC24	FB)  : MUX 35		Ref (H127fb)
+XXL_912			(MC7	FB)  : MUX 38		Ref (F81fb)
+id00433			(MC23	FB)  : MUX 39		Ref (H124fb)
+
+FanIn assignment for block H [36]
+{
+RXA,
+XXL_915,
+id00455,id00505,id00443,id00434,id00444,id00458,id00432,id00466,id00460,id00058Q,id00519,id00509,id00439,id00446,id00464,id00456,id00501,id00515,id00433,id00436,id00073QN,id00452,id00465,id00003,id00462,id00497,id00468,id00476,id00461,id00511,id00454,
+nIRQ6,nIRQ5,nIRQ3,
+}
+Multiplexer assignment for block H
+id00455			(MC15	FB)  : MUX 0		Ref (F88fb)
+id00505			(MC21	FB)  : MUX 1		Ref (G111fb)
+id00443			(MC27	FB)  : MUX 2		Ref (H118fb)
+id00434			(MC12	FB)  : MUX 3		Ref (E75fb)
+id00444			(MC24	FB)  : MUX 4		Ref (H114fb)
+id00458			(MC29	FB)  : MUX 5		Ref (H121fb)
+XXL_915			(MC1	FB)  : MUX 6		Ref (A3fb)
+nIRQ6			(MC33	P)   : MUX 7		Ref (E65p)
+id00432			(MC9	FB)  : MUX 8		Ref (E66fb)
+nIRQ5			(MC35	P)   : MUX 9		Ref (E69p)
+id00466			(MC23	FB)  : MUX 10		Ref (H113fb)
+id00460			(MC5	FB)  : MUX 11		Ref (B32fb)
+id00058Q		(MC4	FB)  : MUX 12		Ref (B21fb)
+id00519			(MC6	FB)  : MUX 14		Ref (C33fb)
+nIRQ3			(MC34	P)   : MUX 15		Ref (E67p)
+id00509			(MC3	FB)  : MUX 16		Ref (B19fb)
+id00439			(MC20	FB)  : MUX 17		Ref (G110fb)
+id00446			(MC7	FB)  : MUX 18		Ref (C36fb)
+id00464			(MC26	FB)  : MUX 20		Ref (H117fb)
+id00456			(MC30	FB)  : MUX 21		Ref (H122fb)
+RXA			(MC36	P)   : MUX 22		Ref (E80p)
+id00501			(MC13	FB)  : MUX 23		Ref (E80fb)
+id00515			(MC17	FB)  : MUX 24		Ref (G104fb)
+id00433			(MC31	FB)  : MUX 25		Ref (H124fb)
+id00436			(MC10	FB)  : MUX 26		Ref (E67fb)
+id00073QN		(MC18	FB)  : MUX 27		Ref (G107fb)
+id00452			(MC14	FB)  : MUX 28		Ref (F85fb)
+id00465			(MC19	FB)  : MUX 29		Ref (G108fb)
+id00003			(MC11	FB)  : MUX 32		Ref (E68fb)
+id00462			(MC22	FB)  : MUX 33		Ref (G112fb)
+id00497			(MC8	FB)  : MUX 34		Ref (C39fb)
+id00468			(MC16	FB)  : MUX 35		Ref (F94fb)
+id00476			(MC25	FB)  : MUX 36		Ref (H116fb)
+id00461			(MC2	FB)  : MUX 37		Ref (A12fb)
+id00511			(MC28	FB)  : MUX 38		Ref (H119fb)
+id00454			(MC32	FB)  : MUX 39		Ref (H127fb)
+
+Creating JEDEC file cpld.jed ...
+
+PLCC84 programmed logic:
+-----------------------------------
+WR = !RW;
+
+!id00070Q = (!id00433.Q & !id00454.Q & !id00456.Q & !id00458.Q);
+
+id00441.D = id00484.Q;
+
+id00446.D = id00519.Q;
+
+id00453.D = id00488.Q;
+
+id00466.D = ((!id00466.Q & id00519.Q)
+	# (id00466.Q & !id00519.Q));
+
+id00484.D = id00448.Q;
+
+id00488.D = id00497.Q;
+
+BERR = 0;
+
+id00497.D = id00499.Q;
+
+DTACK = 0;
+
+id00509.D = 1;
+
+RESET = 0;
+
+HALT = 0;
+
+SPI_SCK = ((!id00448.Q & !id00457.Q)
+	# (id00448.Q & id00459.Q));
+
+SPI_MOSI = !id00490.Q;
+
+SPI_nCS1 = !id00517.Q;
+
+SPI_nCS = !id00437.Q;
+
+LED_GREEN = !id00463.Q;
+
+LED_RED = !id00486.Q;
+
+!id00083Q = (!id00444.Q & id00461.Q);
+
+id00111QN = ((!id00448.Q & !id00453.Q & id00488.Q)
+	# (!id00448.Q & id00453.Q & !id00488.Q));
+
+id00467.D = ((id00467.Q & id00515.Q)
+	# (!id00515.Q & RXA)
+	# (id00467.Q & id00439.Q));
+
+id00519.D = !id00519.Q;
+
+!nIOSEL = (A20 & A21 & A22 & A23 & XXL_911);
+
+id00352Q = ((!A20 & !A21 & !A22 & !A23 & A19)
+	# (!A20 & !A21 & !A22 & !A23 & !RW)
+	# (!A20 & !A21 & !A22 & !A23 & id00507.Q)
+	# (!A20 & !A21 & !A22 & !A23 & A18));
+
+id00348QN = ((!A20 & !A21 & !A22 & !A23 & !A18 & !A19 & RW & !id00507.Q)
+	# (!A20 & A21 & A22 & A23));
+
+id00464.D = ((id00464.Q & XXL_1037)
+	# (!id00464.Q & id00466.Q & id00519.Q));
+
+D_0 = ((!A3 & !A4 & A2 & id00477.Q)
+	# (!A3 & !A4 & !A2 & A1 & id00439.Q)
+	# (A3 & A4 & !A2 & !A1)
+	# (A3 & !A2 & !A1 & id00506.Q)
+	# (!A3 & !A4 & A2 & !A1));
+
+id00507.D = (id00507.Q
+	# (!A20 & A21 & A22 & A23 & FC0 & !FC1 & FC2));
+
+!TXA = ((id00444.Q & !id00432.Q & !id00434.Q & !id00436.Q & !id00501.Q)
+	# (id00444.Q & !id00438.Q & XXL_921));
+
+!id00096Q = (id00003.Q & id00443.Q & id00444.Q & XXL_921 & id00464.Q & id00466.Q & id00519.Q);
+
+id00058Q = ((!id00515.Q & !RXA & !id00439.Q & id00467.Q)
+	# (id00515.Q & id00446.Q));
+
+id00073QN = (!id00515.Q
+	# (id00460.Q & id00462.Q & id00465.Q & !id00505.Q & XXL_914));
+
+!id00444.D = ((!id00444.Q & !id00461.Q)
+	# (id00444.Q & id00003.Q & id00432.Q & !id00434.Q & !id00436.Q & id00443.Q & id00501.Q & id00464.Q & id00466.Q & id00519.Q));
+
+!id00448.D = ((!id00111QN & !id00448.Q)
+	# (!id00111QN & id00459.Q & !id00485.Q & !id00487.Q & !id00502.Q));
+
+!IPL0 = ((nIRQ6 & !nIRQ5)
+	# (nIRQ6 & !nIRQ3 & !id00439.Q));
+
+IPL2 = (nIRQ5 & nIRQ6 & !id00439.Q);
+
+IPL1 = ((nIRQ6 & !nIRQ5)
+	# (nIRQ6 & id00439.Q)
+	# (nIRQ6 & nIRQ2 & nIRQ3));
+
+!id00034Q = (A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911);
+
+id00003.D = ((!id00003.Q & id00443.Q & id00464.Q & id00466.Q & id00519.Q)
+	# (id00003.Q & !id00443.Q)
+	# (id00003.Q & XXL_987));
+
+id00443.D = ((!id00443.Q & id00464.Q & id00466.Q & id00519.Q)
+	# (id00443.Q & XXL_987));
+
+id00452.D = (!id00452.Q & XXL_915);
+
+id00455.D = ((XXL_915 & id00455.Q)
+	# (XXL_915 & id00511.Q & id00476.Q & id00452.Q & id00468.Q));
+
+D_6 = ((!A4 & A2 & !A3 & id00483.Q)
+	# (!A4 & !A2 & A3 & !A1 & id00520.Q)
+	# (!A4 & A2 & !A3 & !A1));
+
+id00468.D = ((XXL_915 & id00452.Q & !id00468.Q)
+	# (XXL_915 & !id00452.Q & id00468.Q));
+
+D_5 = ((A1 & A2 & !A3 & !A4 & id00482.Q)
+	# (id00516.Q & !A1 & !A2 & A3 & !A4));
+
+D_4 = ((!A2 & A1 & !A3 & !A4 & !id00444.Q)
+	# (!A2 & !A1 & A3 & !A4 & id00514.Q)
+	# (A2 & id00481.Q & A1 & !A3 & !A4));
+
+D_1 = ((!A2 & !A1 & A3 & A4)
+	# (!A2 & !A1 & A3 & id00508.Q)
+	# (A2 & id00478.Q & A1 & !A3 & !A4));
+
+D_3 = ((!A2 & !A1 & A3 & A4)
+	# (!A2 & !A1 & A3 & id00512.Q)
+	# (A2 & id00480.Q & A1 & !A3 & !A4));
+
+D_2 = ((!A2 & !A3 & A1 & id00441.Q & !A4)
+	# (A2 & !A3 & A1 & !A4 & id00479.Q)
+	# (!A2 & A3 & !A1 & A4)
+	# (!A2 & A3 & A4 & SPI_MISO)
+	# (!A2 & A3 & !A1 & id00510.Q));
+
+id00476.D = ((XXL_915 & id00476.Q & XXL_986)
+	# (XXL_915 & !id00476.Q & id00452.Q & id00468.Q));
+
+id00511.D = ((XXL_915 & !id00511.Q & id00476.Q & id00452.Q & id00468.Q)
+	# (XXL_915 & id00511.Q & XXL_970));
+
+D_7 = ((!A4 & A2 & !A3 & id00450.Q)
+	# (!A4 & !A2 & A3 & !A1 & id00513.Q)
+	# (!A4 & A2 & !A3 & !A1));
+
+!nODDRAMSEL = (!AS & !LDS & id00352Q & XXL_911);
+
+!nEVENROMSEL = (!AS & !UDS & id00348QN & XXL_911);
+
+!nEVENRAMSEL = (!AS & !UDS & id00352Q & XXL_911);
+
+!nODDROMSEL = (!AS & !LDS & id00348QN & XXL_911);
+
+nEXPSEL = (AS
+	# (FC0 & FC1 & FC2)
+	# (A21 & A22 & A23)
+	# (!A21 & !A22 & !A23 & !A20));
+
+!id00062QN = (!id00515.Q & !RXA & !id00439.Q & id00467.Q);
+
+id00100QN = ((id00083Q & id00096Q)
+	# (id00083Q & !id00432.Q & !id00434.Q & !id00436.Q & !id00501.Q));
+
+id00432.D = ((id00083Q & id00432.Q & id00096Q)
+	# (id00083Q & !id00432.Q & id00003.Q & id00443.Q & id00444.Q & XXL_921 & id00464.Q & id00466.Q & id00519.Q));
+
+id00434.D = ((id00083Q & id00434.Q & XXL_985)
+	# (id00083Q & !id00434.Q & id00432.Q & id00003.Q & id00443.Q & id00444.Q & XXL_921 & id00464.Q & id00466.Q & id00519.Q));
+
+id00459.D = ((!id00111QN & id00448.Q & !id00459.Q)
+	# (!id00111QN & !id00448.Q & id00459.Q));
+
+!id00460.D = ((id00515.Q & id00460.Q & id00446.Q)
+	# (!id00460.Q & !id00446.Q)
+	# (!id00515.Q & !id00460.Q)
+	# (!id00515.Q & !RXA & !id00439.Q & id00467.Q));
+
+id00487.D = ((id00487.Q & !id00111QN & !id00485.Q)
+	# (id00487.Q & !id00111QN & XXL_984)
+	# (!id00487.Q & !id00111QN & id00485.Q & id00448.Q & !id00459.Q));
+
+id00485.D = ((!id00485.Q & !id00111QN & id00448.Q & !id00459.Q)
+	# (id00485.Q & !id00111QN & XXL_984));
+
+id00508.D = ((id00506.Q & !id00111QN & id00448.Q & !id00459.Q)
+	# (id00508.Q & XXL_917));
+
+id00502.D = ((!id00502.Q & !id00111QN & id00485.Q & id00487.Q & id00448.Q & !id00459.Q)
+	# (id00502.Q & !id00111QN & !id00487.Q)
+	# (id00502.Q & !id00111QN & !id00485.Q)
+	# (id00502.Q & !id00111QN & XXL_984));
+
+id00506.D = ((SPI_MISO & !id00111QN & id00448.Q & !id00459.Q)
+	# (id00506.Q & XXL_917));
+
+id00510.D = ((id00508.Q & !id00111QN & id00448.Q & !id00459.Q)
+	# (id00510.Q & XXL_917));
+
+id00514.D = ((id00512.Q & !id00111QN & id00448.Q & !id00459.Q)
+	# (id00514.Q & XXL_917));
+
+id00512.D = ((id00510.Q & !id00111QN & id00448.Q & !id00459.Q)
+	# (id00512.Q & XXL_917));
+
+id00513.D = ((id00520.Q & !id00111QN & id00448.Q & !id00459.Q)
+	# (id00513.Q & XXL_917));
+
+id00516.D = ((id00514.Q & !id00111QN & id00448.Q & !id00459.Q)
+	# (id00516.Q & XXL_917));
+
+id00520.D = ((id00516.Q & !id00111QN & id00448.Q & !id00459.Q)
+	# (id00520.Q & XXL_917));
+
+!id00036Q = (A2 & A3 & A4 & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911);
+
+id00495.D = (A20 & A21 & A22 & A23 & !AS & RW & !LDS & XXL_911 & A2 & A1 & !A3 & !A4);
+
+id00499.D = ((id00499.Q & id00034Q)
+	# (id00499.Q & XXL_1039)
+	# (!id00499.Q & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911 & !A1 & !A2 & A3 & !A4));
+
+id00461.D = (A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911 & A2 & A1 & !A3 & !A4);
+
+id00433.D = ((id00433.Q & XXL_971)
+	# (id00515.Q & !id00433.Q & id00458.Q & id00454.Q & id00456.Q & id00446.Q & id00460.Q & id00462.Q & id00465.Q & !id00505.Q & XXL_914)
+	# (id00515.Q & id00433.Q & !id00458.Q & !id00454.Q & !id00456.Q));
+
+!id00279QN = (HWRST & id00446.Q & id00460.Q & id00462.Q & id00465.Q & !id00505.Q & id00515.Q & id00070Q & XXL_912);
+
+id00442.D = ((!id00100QN & id00445.Q & id00083Q)
+	# (id00100QN & id00442.Q)
+	# (!id00100QN & !id00444.Q & id00461.Q & id00494.Q));
+
+id00438.D = ((!id00100QN & !id00444.Q & id00461.Q & id00489.Q)
+	# (id00100QN & id00438.Q)
+	# (!id00100QN & id00440.Q & id00083Q));
+
+id00440.D = ((!id00100QN & id00442.Q & id00083Q)
+	# (id00100QN & id00440.Q)
+	# (!id00100QN & !id00444.Q & id00461.Q & id00492.Q));
+
+id00449.D = ((!id00100QN & id00451.Q & id00083Q)
+	# (id00100QN & id00449.Q)
+	# (!id00100QN & !id00444.Q & id00461.Q & id00500.Q));
+
+id00445.D = ((!id00100QN & id00447.Q & id00083Q)
+	# (id00100QN & id00445.Q)
+	# (!id00100QN & !id00444.Q & id00461.Q & id00496.Q));
+
+id00447.D = ((!id00100QN & id00449.Q & id00083Q)
+	# (id00100QN & id00447.Q)
+	# (!id00100QN & !id00444.Q & id00461.Q & id00498.Q));
+
+id00456.D = ((id00456.Q & !id00433.Q & id00446.Q & id00460.Q & id00462.Q & id00465.Q & !id00505.Q & id00515.Q & XXL_914 & !id00454.Q)
+	# (!id00456.Q & !id00433.Q & id00446.Q & id00460.Q & id00462.Q & id00465.Q & !id00505.Q & id00515.Q & XXL_914 & id00454.Q)
+	# (id00456.Q & XXL_971));
+
+id00451.D = ((!id00100QN & id00493.Q & id00083Q)
+	# (id00100QN & id00451.Q)
+	# (!id00100QN & !id00444.Q & id00461.Q & id00504.Q));
+
+id00454.D = ((id00446.Q & !id00454.Q & id00515.Q & !id00456.Q & !id00458.Q & !id00433.Q & id00073QN)
+	# (id00446.Q & !id00454.Q & id00515.Q & id00460.Q & id00462.Q & id00465.Q & !id00505.Q & XXL_914 & !id00433.Q)
+	# (id00454.Q & XXL_971)
+	# (id00446.Q & !id00454.Q & id00515.Q & !id00456.Q & !id00458.Q & id00460.Q & id00462.Q & id00465.Q & !id00505.Q & XXL_914));
+
+id00465.D = ((id00062QN & !id00465.Q & id00462.Q & id00460.Q & id00058Q)
+	# (id00062QN & id00465.Q & XXL_967));
+
+id00458.D = ((id00458.Q & !id00433.Q & id00515.Q & XXL_972)
+	# (!id00458.Q & !id00433.Q & id00515.Q & id00058Q & id00073QN & id00454.Q & id00456.Q)
+	# (id00458.Q & XXL_971));
+
+id00462.D = ((id00062QN & id00462.Q & XXL_982)
+	# (id00062QN & !id00462.Q & id00460.Q & id00058Q));
+
+!id00493.D = ((!id00493.Q & id00100QN)
+	# (!id00435.Q & !id00444.Q & id00461.Q));
+
+id00505.D = ((id00062QN & !id00505.Q & id00465.Q & id00462.Q & id00460.Q & id00058Q)
+	# (id00062QN & id00505.Q & !id00465.Q)
+	# (id00062QN & id00505.Q & XXL_967));
+
+!id00515.D = ((id00515.Q & id00446.Q & id00460.Q & id00462.Q & id00465.Q & !id00505.Q & id00070Q & !XXL_912)
+	# (id00446.Q & id00460.Q & id00462.Q & id00465.Q & !id00505.Q & RXA & !id00433.Q & !id00454.Q & !id00456.Q & !id00458.Q)
+	# (!id00515.Q & XXL_983));
+
+id00435.D = ((id00435.Q & XXL_922)
+	# (D_7.PIN & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911 & A2 & A1 & !A3 & !A4));
+
+id00437.D = ((D_2.PIN & !A1 & A2 & A3 & A4 & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911)
+	# (id00437.Q & !D_2.PIN)
+	# (id00437.Q & id00036Q));
+
+id00457.D = ((D_4.PIN & !A1 & A2 & A3 & A4 & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911)
+	# (id00457.Q & !D_4.PIN)
+	# (id00457.Q & id00036Q));
+
+id00463.D = ((D_5.PIN & !A1 & A2 & A3 & A4 & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911)
+	# (id00463.Q & !D_5.PIN)
+	# (id00463.Q & id00036Q));
+
+id00486.D = ((D_3.PIN & !A1 & A2 & A3 & A4 & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911)
+	# (id00486.Q & !D_3.PIN)
+	# (id00486.Q & id00036Q));
+
+id00492.D = ((id00492.Q & XXL_922)
+	# (D_1.PIN & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911 & A2 & A1 & !A3 & !A4));
+
+id00489.D = ((id00489.Q & XXL_922)
+	# (D_0.PIN & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911 & A2 & A1 & !A3 & !A4));
+
+id00490.D = ((D_6.PIN & !A1 & A2 & A3 & A4 & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911)
+	# (id00490.Q & !D_6.PIN)
+	# (id00490.Q & id00036Q));
+
+id00498.D = ((id00498.Q & XXL_922)
+	# (D_4.PIN & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911 & A2 & A1 & !A3 & !A4));
+
+id00494.D = ((id00494.Q & XXL_922)
+	# (D_2.PIN & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911 & A2 & A1 & !A3 & !A4));
+
+id00496.D = ((id00496.Q & XXL_922)
+	# (D_3.PIN & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911 & A2 & A1 & !A3 & !A4));
+
+id00504.D = ((id00504.Q & XXL_922)
+	# (D_6.PIN & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911 & A2 & A1 & !A3 & !A4));
+
+id00500.D = ((id00500.Q & XXL_922)
+	# (D_5.PIN & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911 & A2 & A1 & !A3 & !A4));
+
+id00517.D = ((D_7.PIN & !A1 & A2 & A3 & A4 & A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911)
+	# (id00517.Q & !D_7.PIN)
+	# (id00517.Q & id00036Q));
+
+id00436.D = ((id00083Q & !id00436.Q & id00434.Q & id00432.Q & id00003.Q & id00443.Q & id00444.Q & XXL_921 & id00464.Q & id00466.Q & id00519.Q)
+	# (id00083Q & id00436.Q & XXL_966));
+
+id00450.D = ((id00450.Q & id00279QN)
+	# (HWRST & RXA & id00446.Q & id00460.Q & id00462.Q & id00465.Q & !id00505.Q & id00515.Q & id00070Q & XXL_912));
+
+id00439.D = ((!id00495.Q & id00439.Q)
+	# (!id00495.Q & id00446.Q & id00460.Q & id00462.Q & id00465.Q & !id00505.Q & id00515.Q & id00070Q & !XXL_912));
+
+id00479.D = ((id00479.Q & id00279QN)
+	# (HWRST & id00446.Q & id00460.Q & id00462.Q & id00465.Q & id00480.Q & !id00505.Q & id00515.Q & id00070Q & XXL_912));
+
+id00477.D = ((id00477.Q & id00279QN)
+	# (HWRST & id00446.Q & id00460.Q & id00462.Q & id00465.Q & id00478.Q & !id00505.Q & id00515.Q & id00070Q & XXL_912));
+
+id00478.D = ((id00478.Q & id00279QN)
+	# (HWRST & id00446.Q & id00460.Q & id00462.Q & id00465.Q & id00479.Q & !id00505.Q & id00515.Q & id00070Q & XXL_912));
+
+id00480.D = ((id00480.Q & id00279QN)
+	# (HWRST & id00446.Q & id00460.Q & id00462.Q & id00465.Q & id00481.Q & !id00505.Q & id00515.Q & id00070Q & XXL_912));
+
+id00481.D = ((id00481.Q & id00279QN)
+	# (HWRST & id00446.Q & id00460.Q & id00462.Q & id00465.Q & id00482.Q & !id00505.Q & id00515.Q & id00070Q & XXL_912));
+
+id00482.D = ((id00482.Q & id00279QN)
+	# (HWRST & id00446.Q & id00460.Q & id00462.Q & id00465.Q & id00483.Q & !id00505.Q & id00515.Q & id00070Q & XXL_912));
+
+id00483.D = ((id00483.Q & id00279QN)
+	# (HWRST & id00446.Q & id00450.Q & id00460.Q & id00462.Q & id00465.Q & !id00505.Q & id00515.Q & id00070Q & XXL_912));
+
+id00501.D = ((id00083Q & id00501.Q & XXL_966)
+	# (id00083Q & !id00501.Q & id00436.Q & id00434.Q & id00432.Q & id00003.Q & id00443.Q & id00444.Q & XXL_921 & id00464.Q & id00466.Q & id00519.Q)
+	# (id00083Q & id00501.Q & !id00436.Q));
+
+!XXL_911 = (FC0 & FC1 & FC2);
+
+XXL_912 = (!id00433.Q
+	# (!id00454.Q & !id00456.Q & !id00458.Q));
+
+!XXL_914 = (RXA & !id00433.Q & !id00454.Q & !id00456.Q & !id00458.Q);
+
+XXL_915 = ((A19 & FC0 & FC1 & FC2)
+	# !AS);
+
+!XXL_917 = (!id00111QN & id00448.Q & !id00459.Q);
+
+!XXL_921 = (id00432.Q & !id00434.Q & !id00436.Q & id00501.Q);
+
+!XXL_922 = (A20 & A21 & A22 & A23 & !AS & !RW & !LDS & XXL_911 & A2 & A1 & !A3 & !A4);
+
+!XXL_966 = (id00434.Q & id00432.Q & id00003.Q & id00443.Q & id00444.Q & XXL_921 & id00464.Q & id00466.Q & id00519.Q);
+
+!XXL_967 = (id00462.Q & id00460.Q & id00058Q);
+
+!XXL_970 = (id00476.Q & id00452.Q & id00468.Q);
+
+!XXL_971 = (id00058Q & id00073QN);
+
+!XXL_972 = (id00454.Q & id00456.Q);
+
+!XXL_982 = (id00460.Q & id00058Q);
+
+!XXL_983 = (!RXA & !id00439.Q & id00467.Q);
+
+!XXL_984 = (id00448.Q & !id00459.Q);
+
+!XXL_985 = (id00432.Q & id00003.Q & id00443.Q & id00444.Q & XXL_921 & id00464.Q & id00466.Q & id00519.Q);
+
+!XXL_986 = (id00452.Q & id00468.Q);
+
+!XXL_987 = (id00464.Q & id00466.Q & id00519.Q);
+
+!XXL_1037 = (id00466.Q & id00519.Q);
+
+!XXL_1039 = (!A1 & !A2 & A3 & !A4);
+
+id00441.C = SYS_CLK;
+
+id00441.AR = !HWRST;
+
+id00446.C = UART_CLK;
+
+id00453.C = UART_CLK;
+
+id00453.AR = !HWRST;
+
+id00466.C = UART_CLK;
+
+id00484.C = SYS_CLK;
+
+id00484.AR = !HWRST;
+
+id00488.C = UART_CLK;
+
+id00488.AR = !HWRST;
+
+BERR.OE = id00455.Q;
+
+id00497.C = UART_CLK;
+
+id00497.AR = !HWRST;
+
+DTACK.OE = ((XXL_911 & !AS & id00348QN & !LDS)
+	# (XXL_911 & !AS & id00352Q & !UDS)
+	# (XXL_911 & !AS & id00352Q & !LDS)
+	# (XXL_911 & !LDS & A20 & A21 & A22 & A23)
+	# (LGEXP & !nEXPSEL)
+	# (XXL_911 & !AS & id00348QN & !UDS));
+
+id00509.C = SYS_CLK;
+
+id00509.AR = !HWRST;
+
+RESET.OE = !id00509.Q;
+
+HALT.OE = !id00509.Q;
+
+id00467.C = UART_CLK;
+
+id00467.AR = !HWRST;
+
+id00519.C = UART_CLK;
+
+id00464.C = UART_CLK;
+
+D_0.OE = (A20 & A21 & A22 & A23 & !AS & RW & !LDS & XXL_911);
+
+id00507.C = SYS_CLK;
+
+id00507.AR = !HWRST;
+
+id00444.C = UART_CLK;
+
+id00444.AR = !HWRST;
+
+id00448.C = UART_CLK;
+
+id00448.AR = !HWRST;
+
+id00003.C = UART_CLK;
+
+id00443.C = UART_CLK;
+
+id00452.C = SYS_CLK;
+
+id00452.AR = !HWRST;
+
+id00455.C = SYS_CLK;
+
+id00455.AR = !HWRST;
+
+D_6.OE = (A20 & A21 & A22 & A23 & !AS & RW & !LDS & XXL_911);
+
+id00468.C = SYS_CLK;
+
+id00468.AR = !HWRST;
+
+D_5.OE = (A20 & A21 & A22 & A23 & !AS & RW & !LDS & XXL_911);
+
+D_4.OE = (A20 & A21 & A22 & A23 & !AS & RW & !LDS & XXL_911);
+
+D_1.OE = (A20 & A21 & A22 & A23 & !AS & RW & !LDS & XXL_911);
+
+D_3.OE = (A20 & A21 & A22 & A23 & !AS & RW & !LDS & XXL_911);
+
+D_2.OE = (A20 & A21 & A22 & A23 & !AS & RW & !LDS & XXL_911);
+
+id00476.C = SYS_CLK;
+
+id00476.AR = !HWRST;
+
+id00511.C = SYS_CLK;
+
+id00511.AR = !HWRST;
+
+D_7.OE = (A20 & A21 & A22 & A23 & !AS & RW & !LDS & XXL_911);
+
+id00432.C = UART_CLK;
+
+id00432.AR = !HWRST;
+
+id00434.C = UART_CLK;
+
+id00434.AR = !HWRST;
+
+id00459.C = UART_CLK;
+
+id00459.AR = !HWRST;
+
+id00460.C = UART_CLK;
+
+id00460.AR = !HWRST;
+
+id00487.C = UART_CLK;
+
+id00487.AR = !HWRST;
+
+id00485.C = UART_CLK;
+
+id00485.AR = !HWRST;
+
+id00508.C = UART_CLK;
+
+id00508.AR = !HWRST;
+
+id00502.C = UART_CLK;
+
+id00502.AR = !HWRST;
+
+id00506.C = UART_CLK;
+
+id00506.AR = !HWRST;
+
+id00510.C = UART_CLK;
+
+id00510.AR = !HWRST;
+
+id00514.C = UART_CLK;
+
+id00514.AR = !HWRST;
+
+id00512.C = UART_CLK;
+
+id00512.AR = !HWRST;
+
+id00513.C = UART_CLK;
+
+id00513.AR = !HWRST;
+
+id00516.C = UART_CLK;
+
+id00516.AR = !HWRST;
+
+id00520.C = UART_CLK;
+
+id00520.AR = !HWRST;
+
+id00495.C = SYS_CLK;
+
+id00495.AR = !HWRST;
+
+id00499.C = SYS_CLK;
+
+id00499.AR = !HWRST;
+
+id00461.C = SYS_CLK;
+
+id00461.AR = !HWRST;
+
+id00433.C = UART_CLK;
+
+id00433.AR = !HWRST;
+
+id00442.C = UART_CLK;
+
+id00442.AR = !HWRST;
+
+id00438.C = UART_CLK;
+
+id00438.AR = !HWRST;
+
+id00440.C = UART_CLK;
+
+id00440.AR = !HWRST;
+
+id00449.C = UART_CLK;
+
+id00449.AR = !HWRST;
+
+id00445.C = UART_CLK;
+
+id00445.AR = !HWRST;
+
+id00447.C = UART_CLK;
+
+id00447.AR = !HWRST;
+
+id00456.C = UART_CLK;
+
+id00456.AR = !HWRST;
+
+id00451.C = UART_CLK;
+
+id00451.AR = !HWRST;
+
+id00454.C = UART_CLK;
+
+id00454.AR = !HWRST;
+
+id00465.C = UART_CLK;
+
+id00465.AR = !HWRST;
+
+id00458.C = UART_CLK;
+
+id00458.AR = !HWRST;
+
+id00462.C = UART_CLK;
+
+id00462.AR = !HWRST;
+
+id00493.C = UART_CLK;
+
+id00493.AR = !HWRST;
+
+id00505.C = UART_CLK;
+
+id00505.AR = !HWRST;
+
+id00515.C = UART_CLK;
+
+id00515.AR = !HWRST;
+
+id00435.C = SYS_CLK;
+
+id00435.AR = !HWRST;
+
+id00437.C = SYS_CLK;
+
+id00437.AR = !HWRST;
+
+id00457.C = SYS_CLK;
+
+id00457.AR = !HWRST;
+
+id00463.C = SYS_CLK;
+
+id00463.AR = !HWRST;
+
+id00486.C = SYS_CLK;
+
+id00486.AR = !HWRST;
+
+id00492.C = SYS_CLK;
+
+id00492.AR = !HWRST;
+
+id00489.C = SYS_CLK;
+
+id00489.AR = !HWRST;
+
+id00490.C = SYS_CLK;
+
+id00490.AR = !HWRST;
+
+id00498.C = SYS_CLK;
+
+id00498.AR = !HWRST;
+
+id00494.C = SYS_CLK;
+
+id00494.AR = !HWRST;
+
+id00496.C = SYS_CLK;
+
+id00496.AR = !HWRST;
+
+id00504.C = SYS_CLK;
+
+id00504.AR = !HWRST;
+
+id00500.C = SYS_CLK;
+
+id00500.AR = !HWRST;
+
+id00517.C = SYS_CLK;
+
+id00517.AR = !HWRST;
+
+id00436.C = UART_CLK;
+
+id00436.AR = !HWRST;
+
+id00450.C = UART_CLK;
+
+id00439.C = UART_CLK;
+
+id00439.AR = !HWRST;
+
+id00479.C = UART_CLK;
+
+id00477.C = UART_CLK;
+
+id00478.C = UART_CLK;
+
+id00480.C = UART_CLK;
+
+id00481.C = UART_CLK;
+
+id00482.C = UART_CLK;
+
+id00483.C = UART_CLK;
+
+id00501.C = UART_CLK;
+
+id00501.AR = !HWRST;
+
+
+PLCC84 Pin/Node Placement:
+------------------------------------
+Pin 1  = HWRST;
+Pin 2  = SYS_CLK;
+Pin 4  = D_2; /* MC 16 */
+Pin 5  = D_0; /* MC 14 */
+Pin 6  = A20; /* MC 13 */
+Pin 8  = D_4; /* MC 11 */
+Pin 9  = nEXPSEL; /* MC 8 */
+Pin 10 = nIOSEL; /* MC  6 */
+Pin 11 = A18; /* MC  5 */
+Pin 12 = LDS; /* MC  3 */
+Pin 14 = TDI; /* MC 32 */ 
+Pin 15 = DTACK; /* MC 29 */ 
+Pin 16 = UDS; /* MC 27 */ 
+Pin 17 = RW; /* MC 25 */ 
+Pin 18 = AS; /* MC 24 */ 
+Pin 20 = A23; /* MC 21 */ 
+Pin 21 = A22; /* MC 19 */ 
+Pin 22 = A21; /* MC 17 */ 
+Pin 23 = TMS; /* MC 48 */ 
+Pin 24 = D_3; /* MC 46 */ 
+Pin 25 = D_1; /* MC 45 */ 
+Pin 27 = D_7; /* MC 43 */ 
+Pin 28 = D_5; /* MC 40 */ 
+Pin 29 = nODDROMSEL; /* MC 38 */ 
+Pin 30 = nODDRAMSEL; /* MC 37 */ 
+Pin 31 = nEVENRAMSEL; /* MC 35 */ 
+Pin 33 = A2; /* MC 64 */ 
+Pin 34 = A19; /* MC 61 */ 
+Pin 35 = D_6; /* MC 59 */ 
+Pin 36 = WR; /* MC 57 */ 
+Pin 37 = nEVENROMSEL; /* MC 56 */ 
+Pin 39 = A4; /* MC 53 */ 
+Pin 40 = A1; /* MC 51 */ 
+Pin 41 = A3; /* MC 49 */ 
+Pin 44 = nIRQ6; /* MC 65 */ 
+Pin 45 = nIRQ3; /* MC 67 */ 
+Pin 46 = nIRQ5; /* MC 69 */ 
+Pin 48 = LED_GREEN; /* MC 72 */ 
+Pin 49 = LED_RED; /* MC 73 */ 
+Pin 51 = TXA; /* MC 77 */ 
+Pin 52 = RXA; /* MC 80 */ 
+Pin 54 = SPI_MISO; /* MC 83 */ 
+Pin 56 = SPI_MOSI; /* MC 86 */ 
+Pin 58 = SPI_SCK; /* MC 91 */ 
+Pin 60 = SPI_nCS; /* MC 93 */ 
+Pin 62 = TCK; /* MC 96 */ 
+Pin 63 = SPI_nCS1; /* MC 97 */ 
+Pin 64 = FC0; /* MC 99 */ 
+Pin 65 = FC2; /* MC 101 */ 
+Pin 67 = FC1; /* MC 104 */ 
+Pin 68 = IPL2; /* MC 105 */ 
+Pin 70 = IPL1; /* MC 109 */ 
+Pin 71 = TDO; /* MC 112 */ 
+Pin 73 = IPL0; /* MC 115 */ 
+Pin 74 = nIRQ2; /* MC 117 */ 
+Pin 75 = LGEXP; /* MC 118 */ 
+Pin 76 = BERR; /* MC 120 */ 
+Pin 79 = RESET; /* MC 125 */ 
+Pin 80 = HALT; /* MC 126 */ 
+Pin 83 = UART_CLK;
+PINNODE 314 = XXL_922; /* MC 14 Foldback */
+PINNODE 315 = XXL_911; /* MC 15 Foldback */
+PINNODE 316 = id00036Q; /* MC 16 Foldback */
+PINNODE 318 = FB_2_XXL_922; /* MC 18 Foldback */
+PINNODE 331 = FB_2_XXL_911; /* MC 31 Foldback */
+PINNODE 332 = FB_2_id00036Q; /* MC 32 Foldback */
+PINNODE 345 = XXL_1039; /* MC 45 Foldback */
+PINNODE 346 = FB_3_XXL_922; /* MC 46 Foldback */
+PINNODE 347 = FB_3_XXL_911; /* MC 47 Foldback */
+PINNODE 348 = id00034Q; /* MC 48 Foldback */
+PINNODE 362 = XXL_917; /* MC 62 Foldback */
+PINNODE 363 = FB_4_XXL_911; /* MC 63 Foldback */
+PINNODE 364 = FB_4_id00036Q; /* MC 64 Foldback */
+PINNODE 375 = XXL_987; /* MC 75 Foldback */
+PINNODE 376 = XXL_985; /* MC 76 Foldback */
+PINNODE 377 = XXL_966; /* MC 77 Foldback */
+PINNODE 378 = XXL_921; /* MC 78 Foldback */
+PINNODE 379 = id00096Q; /* MC 79 Foldback */
+PINNODE 380 = id00083Q; /* MC 80 Foldback */
+PINNODE 393 = XXL_984; /* MC 93 Foldback */
+PINNODE 394 = FB_6_XXL_917; /* MC 94 Foldback */
+PINNODE 395 = id00279QN; /* MC 95 Foldback */
+PINNODE 396 = id00070Q; /* MC 96 Foldback */
+PINNODE 404 = FB_7_id00070Q; /* MC 104 Foldback */
+PINNODE 406 = XXL_983; /* MC 106 Foldback */
+PINNODE 407 = XXL_982; /* MC 107 Foldback */
+PINNODE 408 = XXL_967; /* MC 108 Foldback */
+PINNODE 409 = XXL_914; /* MC 109 Foldback */
+PINNODE 410 = FB_7_id00279QN; /* MC 110 Foldback */
+PINNODE 411 = id00062QN; /* MC 111 Foldback */
+PINNODE 422 = XXL_1037; /* MC 122 Foldback */
+PINNODE 423 = FB_8_XXL_987; /* MC 123 Foldback */
+PINNODE 424 = XXL_986; /* MC 124 Foldback */
+PINNODE 425 = XXL_972; /* MC 125 Foldback */
+PINNODE 426 = XXL_971; /* MC 126 Foldback */
+PINNODE 427 = XXL_970; /* MC 127 Foldback */
+PINNODE 428 = FB_8_XXL_914; /* MC 128 Foldback */
+PINNODE 601 = id00495; /* MC 1 Feedback */
+PINNODE 602 = id00352Q; /* MC 2 Feedback */
+PINNODE 603 = XXL_915; /* MC 3 Feedback */
+PINNODE 604 = id00348QN; /* MC 4 Feedback */
+PINNODE 605 = id00507; /* MC 5 Feedback */
+PINNODE 607 = id00435; /* MC 7 Feedback */
+PINNODE 609 = id00457; /* MC 9 Feedback */
+PINNODE 610 = id00437; /* MC 10 Feedback */
+PINNODE 612 = id00461; /* MC 12 Feedback */
+PINNODE 618 = id00486; /* MC 18 Feedback */
+PINNODE 619 = id00509; /* MC 19 Feedback */
+PINNODE 620 = id00441; /* MC 20 Feedback */
+PINNODE 621 = id00058Q; /* MC 21 Feedback */
+PINNODE 622 = id00498; /* MC 22 Feedback */
+PINNODE 623 = id00496; /* MC 23 Feedback */
+PINNODE 624 = id00492; /* MC 24 Feedback */
+PINNODE 625 = id00494; /* MC 25 Feedback */
+PINNODE 626 = id00489; /* MC 26 Feedback */
+PINNODE 627 = id00467; /* MC 27 Feedback */
+PINNODE 628 = id00490; /* MC 28 Feedback */
+PINNODE 631 = id00463; /* MC 31 Feedback */
+PINNODE 632 = id00460; /* MC 32 Feedback */
+PINNODE 633 = id00519; /* MC 33 Feedback */
+PINNODE 634 = id00484; /* MC 34 Feedback */
+PINNODE 636 = id00446; /* MC 36 Feedback */
+PINNODE 639 = id00497; /* MC 39 Feedback */
+PINNODE 641 = id00459; /* MC 41 Feedback */
+PINNODE 642 = id00448; /* MC 42 Feedback */
+PINNODE 644 = id00500; /* MC 44 Feedback */
+PINNODE 647 = id00504; /* MC 47 Feedback */
+PINNODE 648 = id00499; /* MC 48 Feedback */
+PINNODE 651 = id00508; /* MC 51 Feedback */
+PINNODE 652 = id00513; /* MC 52 Feedback */
+PINNODE 653 = id00453; /* MC 53 Feedback */
+PINNODE 654 = id00493; /* MC 54 Feedback */
+PINNODE 655 = id00111QN; /* MC 55 Feedback */
+PINNODE 661 = id00520; /* MC 61 Feedback */
+PINNODE 663 = DTACK.OE; /* MC 63 Feedback */
+PINNODE 664 = id00517; /* MC 64 Feedback */
+PINNODE 665 = id00100QN; /* MC 65 Feedback */
+PINNODE 666 = id00432; /* MC 66 Feedback */
+PINNODE 667 = id00436; /* MC 67 Feedback */
+PINNODE 668 = id00003; /* MC 68 Feedback */
+PINNODE 669 = id00451; /* MC 69 Feedback */
+PINNODE 670 = id00447; /* MC 70 Feedback */
+PINNODE 671 = id00449; /* MC 71 Feedback */
+PINNODE 674 = id00445; /* MC 74 Feedback */
+PINNODE 675 = id00434; /* MC 75 Feedback */
+PINNODE 676 = id00440; /* MC 76 Feedback */
+PINNODE 678 = id00442; /* MC 78 Feedback */
+PINNODE 679 = id00438; /* MC 79 Feedback */
+PINNODE 680 = id00501; /* MC 80 Feedback */
+PINNODE 681 = XXL_912; /* MC 81 Feedback */
+PINNODE 682 = id00485; /* MC 82 Feedback */
+PINNODE 683 = id00516; /* MC 83 Feedback */
+PINNODE 684 = id00512; /* MC 84 Feedback */
+PINNODE 685 = id00452; /* MC 85 Feedback */
+PINNODE 687 = id00506; /* MC 87 Feedback */
+PINNODE 688 = id00455; /* MC 88 Feedback */
+PINNODE 689 = id00483; /* MC 89 Feedback */
+PINNODE 690 = id00514; /* MC 90 Feedback */
+PINNODE 692 = id00510; /* MC 92 Feedback */
+PINNODE 694 = id00468; /* MC 94 Feedback */
+PINNODE 695 = id00487; /* MC 95 Feedback */
+PINNODE 696 = id00502; /* MC 96 Feedback */
+PINNODE 698 = id00481; /* MC 98 Feedback */
+PINNODE 699 = id00450; /* MC 99 Feedback */
+PINNODE 700 = id00480; /* MC 100 Feedback */
+PINNODE 701 = id00478; /* MC 101 Feedback */
+PINNODE 702 = id00479; /* MC 102 Feedback */
+PINNODE 703 = id00477; /* MC 103 Feedback */
+PINNODE 704 = id00515; /* MC 104 Feedback */
+PINNODE 706 = id00482; /* MC 106 Feedback */
+PINNODE 707 = id00073QN; /* MC 107 Feedback */
+PINNODE 708 = id00465; /* MC 108 Feedback */
+PINNODE 710 = id00439; /* MC 110 Feedback */
+PINNODE 711 = id00505; /* MC 111 Feedback */
+PINNODE 712 = id00462; /* MC 112 Feedback */
+PINNODE 713 = id00466; /* MC 113 Feedback */
+PINNODE 714 = id00444; /* MC 114 Feedback */
+PINNODE 716 = id00476; /* MC 116 Feedback */
+PINNODE 717 = id00464; /* MC 117 Feedback */
+PINNODE 718 = id00443; /* MC 118 Feedback */
+PINNODE 719 = id00511; /* MC 119 Feedback */
+PINNODE 721 = id00458; /* MC 121 Feedback */
+PINNODE 722 = id00456; /* MC 122 Feedback */
+PINNODE 724 = id00433; /* MC 124 Feedback */
+PINNODE 727 = id00454; /* MC 127 Feedback */
+PINNODE 728 = id00488; /* MC 128 Feedback */
+
+** Resource Usage **
+
+
+DCERP Field = Summary of Allocations.
+|||||
+|||||_Preset [p,-]       ==  p = PT preset, - No Preset.
+||||
+||||__Reset [g,r,-]      ==  g= Global AR, r = PT reset, - No reset.
+|||
+|||___Clock Enable [e,-] ==  e = Product Term, - always enabled.
+||
+||____Clock [c,g,-],     ==  c = Product term, g = Global term, - No Clock.
+|
+|_____Type [C,D,L,T],    ==  Register type C= combin, D=dff, L=latch, T=tff.
+
+For input only = INPUT.
+
+
+SO Pin Options Field = Summary of Allocations.
+||
+||_OpenCol [o,-]      ==  o = Open Collector enabled, - CMOS drive.
+|
+|__Slew [s,f]         ==  Output Slew/Drive rate, s = slow/low, f = fast/hi drive.
+
+
+MCell Pin# Oe   PinDrive    DCERP  FBDrive   DCERP  Foldback       CascadeOut     TotPT SO
+MC1   0         --                 id00495   Dg-g-  --             --             1     f- 
+MC2   0         --                 id00352Q  C----  --             --             4     f- 
+MC3   12   --   LDS         INPUT  XXL_915   C----  --             --             2     f- 
+MC4   0         --                 id00348QN C----  --             --             2     f- 
+MC5   11   --   A18         INPUT  id00507   Dg-g-  --             --             2     f- 
+MC6   10   on   nIOSEL      C----  --               --             --             1     f- 
+MC7   0         --                 id00435   Dg-g-  --             --             2     f- 
+MC8   9    on   nEXPSEL     C----  --               --             --             4     f- 
+MC9   0         --                 id00457   Dg-g-  --             --             3     f- 
+MC10  0         --                 id00437   Dg-g-  --             --             3     f- 
+MC11  8    PT   D_4         C----  --               --             --             4     f- 
+MC12  0         --                 id00461   Dg-g-  --             --             1     f- 
+MC13  6    --   A20         INPUT  --               --             -> D_0         5     f- 
+MC14  5    PT   D_0         C----  --               XXL_922        --             2     f- 
+MC15  0         --                 --               XXL_911        -> D_2         5     f- 
+MC16  4    PT   D_2         C----  --               id00036Q       --             3     f- 
+MC17  22   --   A21         INPUT  --               --             --             0     f- 
+MC18  0         --                 id00486   Dg-g-  FB_2_XXL_922   --             4     f- 
+MC19  21   --   A22         INPUT  id00509   Dg-g-  --             --             0     f- 
+MC20  0         --                 id00441   Dg-g-  --             --             1     f- 
+MC21  20   --   A23         INPUT  id00058Q  C----  --             --             2     f- 
+MC22  0         --                 id00498   Dg-g-  --             --             2     f- 
+MC23  0         --                 id00496   Dg-g-  --             --             2     f- 
+MC24  18   --   AS          INPUT  id00492   Dg-g-  --             --             2     f- 
+MC25  17   --   RW          INPUT  id00494   Dg-g-  --             --             2     f- 
+MC26  0         --                 id00489   Dg-g-  --             --             2     f- 
+MC27  16   --   UDS         INPUT  id00467   Dg-g-  --             --             3     f- 
+MC28  0         --                 id00490   Dg-g-  --             --             3     f- 
+MC29  15   PT   DTACK       C----  --               --             --             1     f- 
+MC30  0         --                 --               --             --             0     f- 
+MC31  0         --                 id00463   Dg-g-  FB_2_XXL_911   --             4     f- 
+MC32  14   --   TDI         INPUT  id00460   Dg-g-  FB_2_id00036Q  --             5     f- 
+MC33  0         --                 id00519   Dg---  --             --             1     f- 
+MC34  0         --                 id00484   Dg-g-  --             --             1     f- 
+MC35  31   on   nEVENRAMSEL C----  --               --             --             1     f- 
+MC36  0         --                 id00446   Dg---  --             --             1     f- 
+MC37  30   on   nODDRAMSEL  C----  --               --             --             1     f- 
+MC38  29   on   nODDROMSEL  C----  --               --             --             1     f- 
+MC39  0         --                 id00497   Dg-g-  --             --             1     f- 
+MC40  28   PT   D_5         C----  --               --             --             3     f- 
+MC41  0         --                 id00459   Dg-g-  --             --             2     f- 
+MC42  0         --                 id00448   Dg-g-  --             --             2     f- 
+MC43  27   PT   D_7         C----  --               --             --             4     f- 
+MC44  0         --                 id00500   Dg-g-  --             --             2     f- 
+MC45  25   PT   D_1         C----  --               XXL_1039       --             5     f- 
+MC46  24   PT   D_3         C----  --               FB_3_XXL_922   --             5     f- 
+MC47  0         --                 id00504   Dg-g-  FB_3_XXL_911   --             3     f- 
+MC48  23   --   TMS         INPUT  id00499   Dg-g-  id00034Q       --             4     f- 
+MC49  41   --   A3          INPUT  --               --             --             0     f- 
+MC50  0         --                 --               --             --             0     f- 
+MC51  40   --   A1          INPUT  id00508   Dg-g-  --             --             2     f- 
+MC52  0         --                 id00513   Dg-g-  --             --             2     f- 
+MC53  39   --   A4          INPUT  id00453   Dg-g-  --             --             1     f- 
+MC54  0         --                 id00493   Dg-g-  --             --             2     f- 
+MC55  0         --                 id00111QN C----  --             --             2     f- 
+MC56  37   on   nEVENROMSEL C----  --               --             --             1     f- 
+MC57  36   on   WR          C----  --               --             --             1     f- 
+MC58  0         --                 --               --             --             0     f- 
+MC59  35   PT   D_6         C----  --               --             --             4     f- 
+MC60  0         --                 --               --             --             0     f- 
+MC61  34   --   A19         INPUT  id00520   Dg-g-  --             --             2     f- 
+MC62  0         --                 --               XXL_917        -> DTACK.OE    5     f- 
+MC63  0         --                 DTACK.OE  C----  FB_4_XXL_911   --             3     f- 
+MC64  33   --   A2          INPUT  id00517   Dg-g-  FB_4_id00036Q  --             4     f- 
+MC65  44   --   nIRQ6       INPUT  id00100QN C----  --             --             2     f- 
+MC66  0         --                 id00432   Dg-g-  --             --             2     f- 
+MC67  45   --   nIRQ3       INPUT  id00436   Dg-g-  --             --             2     f- 
+MC68  0         --                 id00003   Dg---  --             --             3     f- 
+MC69  46   --   nIRQ5       INPUT  id00451   Dg-g-  --             --             3     f- 
+MC70  0         --                 id00447   Dg-g-  --             --             3     f- 
+MC71  0         --                 id00449   Dg-g-  --             --             3     f- 
+MC72  48   on   LED_GREEN   C----  --               --             --             1     f- 
+MC73  49   on   LED_RED     C----  --               --             --             1     f- 
+MC74  0         --                 id00445   Dg-g-  --             --             3     f- 
+MC75  50        --                 id00434   Dg-g-  XXL_987        --             3     f- 
+MC76  0         --                 id00440   Dg-g-  XXL_985        --             4     f- 
+MC77  51   on   TXA         C----  --               XXL_966        --             3     f- 
+MC78  0         --                 id00442   Dg-g-  XXL_921        --             4     f- 
+MC79  0         --                 id00438   Dg-g-  id00096Q       --             4     f- 
+MC80  52   --   RXA         INPUT  id00501   Dg-g-  id00083Q       --             4     f- 
+MC81  0         --                 XXL_912   C----  --             --             2     f- 
+MC82  0         --                 id00485   Dg-g-  --             --             2     f- 
+MC83  54   --   SPI_MISO    INPUT  id00516   Dg-g-  --             --             2     f- 
+MC84  0         --                 id00512   Dg-g-  --             --             2     f- 
+MC85  55        --                 id00452   Dg-g-  --             --             1     f- 
+MC86  56   on   SPI_MOSI    C----  --               --             --             1     f- 
+MC87  0         --                 id00506   Dg-g-  --             --             2     f- 
+MC88  57        --                 id00455   Dg-g-  --             --             2     f- 
+MC89  0         --                 id00483   Dg---  --             --             2     f- 
+MC90  0         --                 id00514   Dg-g-  --             --             2     f- 
+MC91  58   on   SPI_SCK     C----  --               --             --             2     f- 
+MC92  0         --                 id00510   Dg-g-  --             --             2     f- 
+MC93  60   on   SPI_nCS     C----  --               XXL_984        --             2     f- 
+MC94  61        --                 id00468   Dg-g-  FB_6_XXL_917   --             3     f- 
+MC95  0         --                 id00487   Dg-g-  id00279QN      --             4     f- 
+MC96  62   --   TCK         INPUT  id00502   Dg-g-  id00070Q       --             5     f- 
+MC97  63   on   SPI_nCS1    C----  --               --             --             1     f- 
+MC98  0         --                 id00481   Dg---  --             --             2     f- 
+MC99  64   --   FC0         INPUT  id00450   Dg---  --             --             2     f- 
+MC100 0         --                 id00480   Dg---  --             --             2     f- 
+MC101 65   --   FC2         INPUT  id00478   Dg---  --             --             2     f- 
+MC102 0         --                 id00479   Dg---  --             --             2     f- 
+MC103 0         --                 id00477   Dg---  --             --             2     f- 
+MC104 67   --   FC1         INPUT  id00515   Dg-g-  FB_7_id00070Q  --             4     f- 
+MC105 68   on   IPL2        C----  --               --             --             1     f- 
+MC106 0         --                 id00482   Dg---  XXL_983        --             3     f- 
+MC107 69        --                 id00073QN C----  XXL_982        --             3     f- 
+MC108 0         --                 id00465   Dg-g-  XXL_967        --             3     f- 
+MC109 70   on   IPL1        C----  --               XXL_914        --             4     f- 
+MC110 0         --                 id00439   Dg-g-  FB_7_id00279QN --             3     f- 
+MC111 0         --                 id00505   Dg-g-  id00062QN      --             4     f- 
+MC112 71   --   TDO         C----  id00462   Dg-g-  --             --             2     f- 
+MC113 0         --                 id00466   Dg---  --             --             2     f- 
+MC114 0         --                 id00444   Dg-g-  --             --             2     f- 
+MC115 73   on   IPL0        C----  --               --             --             2     f- 
+MC116 0         --                 id00476   Dg-g-  --             --             2     f- 
+MC117 74   --   nIRQ2       INPUT  id00464   Dg---  --             --             2     f- 
+MC118 75   --   LGEXP       INPUT  id00443   Dg---  --             --             2     f- 
+MC119 0         --                 id00511   Dg-g-  --             --             2     f- 
+MC120 76   PT   BERR        C----  --               --             --             1     f- 
+MC121 0         --                 id00458   Dg-g-  --             --             3     f- 
+MC122 0         --                 id00456   Dg-g-  XXL_1037       --             4     f- 
+MC123 77        --                 --               FB_8_XXL_987   --             1     f- 
+MC124 0         --                 id00433   Dg-g-  XXL_986        --             4     f- 
+MC125 79   PT   RESET       C----  --               XXL_972        --             2     f- 
+MC126 80   PT   HALT        C----  --               XXL_971        --             2     f- 
+MC127 0         --                 id00454   Dg-g-  XXL_970        --             5     f- 
+MC128 81        --                 id00488   Dg-g-  FB_8_XXL_914   --             2     f- 
+MC0   2         SYS_CLK     INPUT  --               --             --             0     f- 
+MC0   1         HWRST       INPUT  --               --             --             0     f- 
+MC0   84        --                 --               --             --             0     f- 
+MC0   83        UART_CLK    INPUT  --               --             --             0     f- 
+
+Logic Array Block			Macro Cells	I/O Pins	Foldbacks	TotalPT	FanIN		Cascades
+A: MC1	- MC16		14/16(87%)	8/16(50%)	3/16(18%)	44/80(55%)	33/40(82%)	2
+B: MC17	- MC32		14/16(87%)	8/16(50%)	3/16(18%)	33/80(41%)	37/40(92%)	0
+C: MC33	- MC48		16/16(100%)	8/16(50%)	4/16(25%)	37/80(46%)	37/40(92%)	0
+D: MC49	- MC64		11/16(68%)	8/16(50%)	3/16(18%)	29/80(36%)	37/40(92%)	1
+E: MC65	- MC80		16/16(100%)	7/16(43%)	6/16(37%)	45/80(56%)	29/40(72%)	0
+F: MC81	- MC96		16/16(100%)	5/16(31%)	4/16(25%)	36/80(45%)	36/40(90%)	0
+G: MC97	- MC112		17/16(106%)	7/16(43%)	7/16(43%)	40/80(50%)	30/40(75%)	0
+H: MC113- MC128		15/16(93%)	6/16(37%)	7/16(43%)	38/80(47%)	36/40(90%)	0
+
+Total dedicated input used:	3/4 	(75%)
+Total I/O pins used		57/64 	(89%)
+Total Macro cells used 		122/128 	(95%)
+Total Flip-Flop used 		80/128 	(62%)
+Total Foldback logic used 	37/128 	(28%)
+Total Nodes+FB/MCells 		156/128 	(121%)
+Total cascade used 		3
+Total input pins 			30
+Total output pins 		30
+Total Pts 				302
+Creating pla file cpld.tt3 with 0 inputs 0 outputs, 0 pins 0 nodes and 0 pterms...
+
+----------------  End fitter, Design FITS
+$Device PLCC84 fits; JTAG ON; Secure OFF
+FIT1508 completed in 0.00 seconds
