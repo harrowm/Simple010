@@ -7756,7 +7756,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4K7"
+		(property "Value" "1K"
 			(at 162.56 80.0099 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7800,7 +7800,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17673"
+		(property "LCSC" "C17513"
 			(at 160.02 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -7811,7 +7811,7 @@
 				)
 			)
 		)
-		(property "Mouser" "0805W8F4701T5E"
+		(property "Mouser" "0805W8F1001T5E"
 			(at 160.02 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -9881,7 +9881,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4K7"
+		(property "Value" "1K"
 			(at 176.53 64.7699 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9925,7 +9925,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17673"
+		(property "LCSC" "C17513"
 			(at 173.99 63.5 0)
 			(hide yes)
 			(show_name no)
@@ -9936,7 +9936,7 @@
 				)
 			)
 		)
-		(property "Mouser" "0805W8F4701T5E"
+		(property "Mouser" "0805W8F1001T5E"
 			(at 173.99 63.5 0)
 			(hide yes)
 			(show_name no)
@@ -10554,7 +10554,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "1K"
 			(at 186.69 67.31 90)
 			(show_name no)
 			(do_not_autoplace no)
