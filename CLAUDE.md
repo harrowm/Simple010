@@ -84,8 +84,9 @@ These are **not connected to the CPLD** (freed up pins for IPL/IRQ signals). The
 
 The USB schematic (`design/USB.kicad_sch`) includes an **MCP2221A** USB bridge providing:
 - USB-CDC serial → connected to `TXDA`/`RXDA` (CPLD UART A)
-- USB-SPI → SD card interface (`SPICLK`, `SPICS`, `SPIMOSI`, `SPIMISO`)
-- Additional CS line: `SPI CS2` for a second SPI device
+- SPI/I²C pins (GP0–GP3, SCL, SDA) are **unconnected**
+
+The SD card SPI interface (`SPICLK`, `SPICS`, `SPIMOSI`, `SPIMISO`) connects directly between J8 and the CPLD (U2). A second CS line (`SPICS2`) is available on J1, also driven by the CPLD.
 
 ### KiCad design structure
 
