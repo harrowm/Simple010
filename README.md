@@ -10,7 +10,7 @@ A 68010 single-board computer based on the [rosco_m68k r2](https://github.com/ro
 | RAM | 1 MB — two AS6C4008-55PCN SRAMs (even/odd byte lanes) |
 | ROM | Two SST39SF040 4Mb flash (even/odd byte lanes) |
 | CPLD | ATF1508AS PLCC84 — replaces IC2/IC3/IC4/IC5/IC6/IC7 from rosco_m68k r2 |
-| USB/serial | MCP2221A — USB-CDC serial to UART A only (SPI/I²C pins unconnected) |
+| USB/serial | MCP2221A — USB-CDC serial to UART A. The original rosco_m68k board has two UARTs A and B. However, the code for two UARTs won't fit into the CPLD, so a cheaper one-channel USB-to-serial chip is used. |
 | PCB | 4-layer, 100 × 100 mm, JLCPCB stackup (F.Cu / GND / PWR / B.Cu) |
 
 ### Memory map
