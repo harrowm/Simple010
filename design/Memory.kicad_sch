@@ -6407,6 +6407,17 @@
 				)
 			)
 		)
+		(property "Mouser" "SST39SF040-70-4I-NHE"
+			(at 55.88 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "21"
 			(uuid "347b3e51-d3d9-405c-a22f-8d27a80aa037")
 		)
@@ -6838,6 +6849,17 @@
 				)
 			)
 		)
+		(property "Mouser" "913-AS6C4008-55PCN"
+			(at 158.75 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "21"
 			(uuid "36de7f36-04b0-4365-b574-91ed8aacee1a")
 		)
@@ -7104,6 +7126,17 @@
 			)
 		)
 		(property "Description" "Silicon Storage Technology (SSF) 512k x 8 Flash ROM"
+			(at 107.95 102.87 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mouser" "SST39SF040-70-4I-NHE"
 			(at 107.95 102.87 0)
 			(hide yes)
 			(show_name no)
@@ -8289,6 +8322,17 @@
 			)
 		)
 		(property "Description" "512K x 8 Low Power CMOS RAM, DIP-32"
+			(at 210.82 96.52 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mouser" "913-AS6C4008-55PCN"
 			(at 210.82 96.52 0)
 			(hide yes)
 			(show_name no)

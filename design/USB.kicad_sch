@@ -10856,6 +10856,28 @@
 				)
 			)
 		)
+		(property "LCSC" "C2066444"
+			(at 127 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mouser" "595-LM809M3-4.63NOPB"
+			(at 127 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2c96f41e-d863-4d34-8aef-023b0caa44bc")
 		)

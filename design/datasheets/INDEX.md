@@ -9,8 +9,8 @@ LCSC numbers are for JLCPCB ordering. Mouser numbers are for Mouser ordering.
 |-----|-------|------|--------|-----------|
 | U10 | MC68010P — 68010 CPU | — | — | [MC68010.pdf](MC68010.pdf) |
 | U2 | ATF1508AS — CPLD PLCC84 | — | — | [ATF1508AS.pdf](ATF1508AS.pdf) |
-| U14, U15 | SST39SF040 — 4Mb Flash ROM | — | — | [SST39SF040.pdf](SST39SF040.pdf) |
-| U16, U17 | AS6C4008-55PCN — 512K×8 SRAM | C62646 | 913-AS6C4008-55PCN | [AS6C4008.pdf](AS6C4008.pdf) |
+| U14, U15 | SST39SF040 — 4Mb Flash ROM PLCC-32 | — (PLCC-32 not stocked on LCSC) | 579-SST39SF040-70-4I-NHE | [SST39SF040.pdf](SST39SF040.pdf) |
+| U16, U17 | AS6C4008-55PCN — 512K×8 SRAM | C1350141 (OOS) | 913-AS6C4008-55PCN | [AS6C4008.pdf](AS6C4008.pdf) |
 | U1 | MCP2221A — USB↔UART/I²C bridge | C640876 | 579-MCP2221A-I/SL | [MCP2221A.pdf](MCP2221A.pdf) |
 | U9 | USBLC6-2SC6 — USB ESD protection | C7519 | 511-USBLC6-2SC6 | [USBLC6-2SC6.pdf](USBLC6-2SC6.pdf) |
 | U11 | LM809M3-4.63/NOPB — 4.63V reset supervisor SOT-23 | C2066444 | 595-LM809M3-4.63NOPB | [LM809.pdf](LM809.pdf) |
