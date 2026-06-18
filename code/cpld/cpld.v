@@ -41,10 +41,11 @@
 //
 //   Value = 0xC1  (CPLD + SPI accel + version 1)
 //
-//   Firmware usage:
-//     uint8_t cap = *(volatile uint8_t*)0xF00004;
-//     if (cap == 0xC1) { /* CPLD with HW SPI — use SPIRX accelerator */ }
-//     else             { /* original XR68C681 — use bit-bang SPI     */ }
+//   Firmware usage (note: access the ODD byte address 0xF00005, not 0xF00004):
+//     uint8_t cap = *(volatile uint8_t*)0xF00005;  // LDS cycle; uart_sel requires LDS
+//     if (cap & 0x80) { /* CPLD present */
+//       if (cap & 0x40) { /* HW SPI accelerator available */ }
+//     } else           { /* original XR68C681 */ }
 
 `default_nettype none
 

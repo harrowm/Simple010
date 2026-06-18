@@ -68,7 +68,7 @@ The CPLD implements the entire system glue in `code/cpld/cpld.v`:
 6. **SPI RX accelerator** — hardware-assisted SD card byte receive at 1.843 MHz (UART_CLK/2); reduces per-byte bus traffic from ~24 to 2 cycles
 7. **Interrupt priority encoder** — replaces 74LS148; encodes `nIRQ2/3/5/6` + UART RX into 68010 `IPL2:IPL1:IPL0`
 
-**CPLD detection register:** Reading `$F00004` returns `0xC1` (CPLD present + SPI accelerator + version 1). The original XR68C681 maps this address to a write-only register, so firmware can distinguish CPLD from original chip with a single read.
+**CPLD detection register:** Reading `$F00005` (= `DUART_R_MISR`, the odd/LDS byte address) returns `0xC1` (CPLD present + SPI accelerator + version 1). The CPLD's `uart_sel` is gated on `~LDS`, so the access **must** target the odd address `0xF00005` — reading even address `0xF00004` (UDS) will not reach the CPLD. The original XR68C681 maps this register to MISR (masked interrupt status), which reads ~0x00 at boot, so firmware can distinguish CPLD from original chip with a single read.
 
 **Resource utilisation:** 122/128 macro cells (95%). The device is nearly full — adding significant new logic will likely not fit. The fitter requires `-strategy Cascade_Logic ON -strategy Foldback_Logic ON` to route within the ATF1508AS block fanin limit of 40 unique inputs.
 
