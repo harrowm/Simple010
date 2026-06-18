@@ -79,6 +79,15 @@ The `-DSIMULATION` flag is required — without it 2 of 120 tests fail due to a 
 
 The firmware is the standard rosco_m68k r2 firmware cloned into `rosco/`, with minimal changes for Simple010 hardware.
 
+The rosco directory is a clone of [rosco-m68k/rosco_m68k](https://github.com/rosco-m68k/rosco_m68k). Simple010 changes are on the `develop` branch, pushed to a fork at [harrowm/rosco_m68k](https://github.com/harrowm/rosco_m68k). The upstream is `origin`; the fork is `fork`:
+
+```sh
+cd rosco/rosco_m68k
+git add <files>
+git commit -m "description"
+git push fork develop
+```
+
 ### CPLD compatibility
 
 The CPLD's UART emulates the XR68C681 (MC68681) at the register level. The existing rosco firmware DUART detection and initialisation code works without modification: the CPLD returns `0x0F` from the IVR register at reset, exactly as the real XR68C681 does.
