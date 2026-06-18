@@ -13,7 +13,7 @@ LCSC numbers are for JLCPCB ordering. Mouser numbers are for Mouser ordering.
 | U16, U17 | AS6C4008-55PCN — 512K×8 SRAM | C62646 | 913-AS6C4008-55PCN | [AS6C4008.pdf](AS6C4008.pdf) |
 | U1 | MCP2221A — USB↔UART/I²C bridge | C640876 | 579-MCP2221A-I/SL | [MCP2221A.pdf](MCP2221A.pdf) |
 | U9 | USBLC6-2SC6 — USB ESD protection | C7519 | 511-USBLC6-2SC6 | [USBLC6-2SC6.pdf](USBLC6-2SC6.pdf) |
-| U11 | UM809SS — 2.93V reset supervisor SOT-23 | — | — | [UM809SS.pdf](UM809SS.pdf) |
+| U11 | LM809M3-4.63/NOPB — 4.63V reset supervisor SOT-23 | C2066444 | 595-LM809M3-4.63NOPB | [LM809.pdf](LM809.pdf) |
 
 ## Oscillators
 

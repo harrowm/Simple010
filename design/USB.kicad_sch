@@ -10812,7 +10812,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "UM809SS"
+		(property "Value" "LM809M3-4.63/NOPB"
 			(at 120.65 76.1999 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10834,7 +10834,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lm809.pdf"
 			(at 127 74.93 0)
 			(hide yes)
 			(show_name no)
