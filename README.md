@@ -8,7 +8,7 @@ A 68010 single-board computer based on the [rosco_m68k r2](https://github.com/ro
 |------|--------|
 | CPU | Motorola MC68010P at 10 MHz |
 | RAM | 1 MB — two AS6C4008-55PCN SRAMs (even/odd byte lanes) |
-| ROM | Two SST39SF040 4Mb flash (even/odd byte lanes) |
+| ROM | Two SST39SF040 4 Mb flash (even/odd byte lanes) |
 | CPLD | ATF1508AS PLCC84 — replaces IC2/IC3/IC4/IC5/IC6/IC7 from rosco_m68k r2 |
 | USB/serial | MCP2221A — USB-CDC serial to UART A. The original rosco_m68k board has two UARTs A and B. However, the code for two UARTs won't fit into the CPLD, so a cheaper one-channel USB-to-serial chip is used. |
 | PCB | 4-layer, 100 × 100 mm, JLCPCB stackup (F.Cu / GND / PWR / B.Cu) |
@@ -121,7 +121,7 @@ The CPLD includes a hardware SPI byte-receive engine clocked at ~1.843 MHz (UART
 | 2 | Poll SRA bit 2 (`spi_busy`) until clear | `0xF00003` (read) |
 | 3 | Read received byte from SPIRX register | `0xF00009` (read) |
 
-Send operations (`BBSPI_send_byte`, `BBSPI_send_buffer`) are unchanged — they continue to bit-bang through the CPLD GPIO, which is correct since the SD card protocol is heavily read-biased and transmit calls are infrequent. On original rosco hardware `cpld_spi_accel` is `false` and both receive functions fall back to the existing bit-bang asm routines in `dua_spi_asm.asm`.
+Send operations (`BBSPI_send_byte`, `BBSPI_send_buffer`) are unchanged — they continue to bit-bang through the CPLD GPIO, which is correct since the SD card protocol is heavily read-biased and transmit calls are infrequent. On original rosco hardware, `cpld_spi_accel` is `false` and both receive functions fall back to the existing bit-bang asm routines in `dua_spi_asm.asm`.
 
 ## Parts and ordering
 
