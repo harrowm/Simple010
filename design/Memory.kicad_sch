@@ -6352,7 +6352,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "154bb879-940e-45a0-a366-be1c742edf6c")
-		(property "Reference" "U14"
+		(property "Reference" "U3"
 			(at 58.0233 66.04 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6517,7 +6517,7 @@
 		(instances
 			(project "Simple010"
 				(path "/4f37455c-e998-4ed3-8493-a94956af64c1/d43ba676-34f7-491a-b472-bfb93379ede2"
-					(reference "U14")
+					(reference "U3")
 					(unit 1)
 				)
 			)
@@ -6692,7 +6692,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "29eae897-3ef7-46f6-8432-b71b403f05f8")
-		(property "Reference" "R20"
+		(property "Reference" "R2"
 			(at 80.01 151.13 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6776,7 +6776,7 @@
 		(instances
 			(project "Simple010"
 				(path "/4f37455c-e998-4ed3-8493-a94956af64c1/d43ba676-34f7-491a-b472-bfb93379ede2"
-					(reference "R20")
+					(reference "R2")
 					(unit 1)
 				)
 			)
@@ -6794,7 +6794,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "31844a47-10cb-4a95-a666-18230d879137")
-		(property "Reference" "U16"
+		(property "Reference" "U5"
 			(at 160.8933 66.04 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -6959,7 +6959,7 @@
 		(instances
 			(project "Simple010"
 				(path "/4f37455c-e998-4ed3-8493-a94956af64c1/d43ba676-34f7-491a-b472-bfb93379ede2"
-					(reference "U16")
+					(reference "U5")
 					(unit 1)
 				)
 			)
@@ -6977,7 +6977,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "4f15f5b3-8b94-47ab-9811-f373dbc2e4f7")
-		(property "Reference" "C10"
+		(property "Reference" "C7"
 			(at 66.04 46.99 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7061,7 +7061,7 @@
 		(instances
 			(project "Simple010"
 				(path "/4f37455c-e998-4ed3-8493-a94956af64c1/d43ba676-34f7-491a-b472-bfb93379ede2"
-					(reference "C10")
+					(reference "C7")
 					(unit 1)
 				)
 			)
@@ -7080,7 +7080,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "56c09c7e-4ac9-45a9-bb15-8d093e6a39b2")
-		(property "Reference" "U15"
+		(property "Reference" "U4"
 			(at 110.0933 66.04 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7246,7 +7246,7 @@
 		(instances
 			(project "Simple010"
 				(path "/4f37455c-e998-4ed3-8493-a94956af64c1/d43ba676-34f7-491a-b472-bfb93379ede2"
-					(reference "U15")
+					(reference "U4")
 					(unit 1)
 				)
 			)
@@ -7264,7 +7264,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "59643151-d45c-4172-9c25-1e2111329c7c")
-		(property "Reference" "C47"
+		(property "Reference" "C6"
 			(at 54.61 46.99 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7348,7 +7348,7 @@
 		(instances
 			(project "Simple010"
 				(path "/4f37455c-e998-4ed3-8493-a94956af64c1/d43ba676-34f7-491a-b472-bfb93379ede2"
-					(reference "C47")
+					(reference "C6")
 					(unit 1)
 				)
 			)
@@ -7445,7 +7445,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "907f4464-afbf-44f3-839e-b00c2e550c55")
-		(property "Reference" "C9"
+		(property "Reference" "C5"
 			(at 43.18 46.99 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7529,7 +7529,7 @@
 		(instances
 			(project "Simple010"
 				(path "/4f37455c-e998-4ed3-8493-a94956af64c1/d43ba676-34f7-491a-b472-bfb93379ede2"
-					(reference "C9")
+					(reference "C5")
 					(unit 1)
 				)
 			)
@@ -7940,7 +7940,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "c68bfd61-6f4f-4632-a2af-8ca8c200952b")
-		(property "Reference" "C48"
+		(property "Reference" "C8"
 			(at 77.47 46.99 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8024,7 +8024,7 @@
 		(instances
 			(project "Simple010"
 				(path "/4f37455c-e998-4ed3-8493-a94956af64c1/d43ba676-34f7-491a-b472-bfb93379ede2"
-					(reference "C48")
+					(reference "C8")
 					(unit 1)
 				)
 			)
@@ -8277,7 +8277,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e7b802b5-0ccb-4f19-9dfe-9a3691164bc3")
-		(property "Reference" "U17"
+		(property "Reference" "U6"
 			(at 212.9633 66.04 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8442,7 +8442,7 @@
 		(instances
 			(project "Simple010"
 				(path "/4f37455c-e998-4ed3-8493-a94956af64c1/d43ba676-34f7-491a-b472-bfb93379ede2"
-					(reference "U17")
+					(reference "U6")
 					(unit 1)
 				)
 			)
