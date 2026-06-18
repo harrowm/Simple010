@@ -36,21 +36,24 @@ LCSC numbers are for JLCPCB ordering. Mouser numbers are for Mouser ordering.
 | SW1 | XKB TS-1187A-B-A-B — 5.1×5.1mm SMD tact switch | C318884 | — | [TS-1187A_SW1.pdf](TS-1187A_SW1.pdf) |
 | J3 | Korean Hroparts TYPE-C-31-M-12 — USB-C receptacle 16P | C165948 | — | [TYPE-C-31-M-12_USB-C.pdf](TYPE-C-31-M-12_USB-C.pdf) |
 
-## Passives (0805, Yageo/KEMET/Samsung)
+## Passives (all 0805 unless noted)
 
-| Value | LCSC | Mouser |
-|-------|------|--------|
-| 100nF MLCC X7R | C1711 / C49678 | CL21B104KBCNNNC / 603-CC0805KRX7R9BB104 |
-| 100pF MLCC NP0 | C62768 | 603-CC0805JRNPO9BN101 |
-| 470nF MLCC X7R | C106846 | 603-CC0805KKX7R8BB474 |
-| 10uF MLCC X5R | C89827 | 603-CC0805KKX5R7BB106 |
-| 47uF electrolytic | C135808 | J32MLB7476MPPDTJ |
-| 1kΩ 1% | C17512 | ERJ-6ENF1001V |
-| 1.2kΩ 1% | C17512 | CRCW08051K20FKEA |
-| 4.7kΩ 1% | C17515 | ERJ-6ENF4701V |
-| 5.1kΩ 1% | C84375 | 603-RC0805FR-075K1L |
-| 10kΩ 1% | C84376 | 603-RC0805FR-0710KL |
-| 1MΩ 1% | C107700 | 603-RC0805FR-071ML |
+All passives are JLCPCB **Basic** parts — no extended part setup fees.
+UNI-ROYAL resistors are sold as "Royalohm" on Mouser; search by manufacturer PN.
+
+| Value | Refs | LCSC | Manufacturer PN | Mouser |
+|-------|------|------|-----------------|--------|
+| 100nF MLCC X7R | C9,C10,C12,C14–C22,C30,C43–C50 | C49678 | Yageo CC0805KRX7R9BB104 | 603-CC0805KRX7R9BB104 |
+| 100pF MLCC C0G/NP0 | C11 | C1790 | Samsung CL21C101JBANNNC | 187-CL21C101JBANNNC |
+| 470nF MLCC X7R | C28 | C13967 | Samsung CL21B474KBFNNNE | 187-CL21B474KBFNNNE |
+| 10µF MLCC X5R 25V | C29,C31 | C15850 | Samsung CL21A106KAYNNNE | 187-CL21A106KAYNNNE |
+| 47µF MLCC X5R 10V **1206** | C49 | C96123 | Samsung CL31A476MPHNNNE | 187-CL31A476MPHNNNE |
+| 1kΩ 1% | R17,R22,R23 | C17513 | UNI-ROYAL 0805W8F1001T5E | 0805W8F1001T5E |
+| 1.2kΩ 1% | R31 | C17379 | UNI-ROYAL 0805W8F1201T5E | 0805W8F1201T5E |
+| 4.7kΩ 1% | R9,R10,R18,R24–R34 | C17673 | UNI-ROYAL 0805W8F4701T5E | 0805W8F4701T5E |
+| 5.1kΩ 1% | R15,R16 | C27834 | UNI-ROYAL 0805W8F5101T5E | 0805W8F5101T5E |
+| 10kΩ 1% | R19,R20 | C17414 | UNI-ROYAL 0805W8F1002T5E | 0805W8F1002T5E |
+| 1MΩ 1% | R12 | C17514 | UNI-ROYAL 0805W8F1004T5E | 0805W8F1004T5E |
 
 ---
 
@@ -59,3 +62,5 @@ LCSC numbers are for JLCPCB ordering. Mouser numbers are for Mouser ordering.
 **ATF1508AS LCSC:** The ATF1508AS-15JU84 (PLCC84, 5V, 15ns) is not stocked on LCSC/JLCPCB. Order directly from Microchip or via a distributor such as Mouser (556-AF1508AS15JU84) or DigiKey.
 
 **MC68010P LCSC:** Not available on LCSC. Source from eBay/second-hand market, or Mouser (was stocked as NXP MC68010P10, now EOL).
+
+**Mouser numbers** correspond to the same manufacturer as the LCSC part throughout. UNI-ROYAL resistors are listed on Mouser under the Royalohm brand; search by manufacturer PN (e.g. 0805W8F4701T5E).

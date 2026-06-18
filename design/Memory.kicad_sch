@@ -6734,7 +6734,7 @@
 				)
 			)
 		)
-		(property "Mouser" "603-RC0805FR-0710KL"
+		(property "Mouser" "0805W8F1002T5E "
 			(at 77.47 151.13 0)
 			(hide yes)
 			(show_name yes)
@@ -6745,7 +6745,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C84376"
+		(property "LCSC" "C17414"
 			(at 77.47 151.13 0)
 			(hide yes)
 			(show_name yes)

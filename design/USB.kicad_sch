@@ -6347,7 +6347,7 @@
 				)
 			)
 		)
-		(property "Mouser" "603-CC0805KKX7R8BB474"
+		(property "Mouser" "187-CL21B474KBFNNNE"
 			(at 204.47 52.07 0)
 			(hide yes)
 			(show_name yes)
@@ -6358,7 +6358,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C106846"
+		(property "LCSC" "C13967"
 			(at 204.47 52.07 0)
 			(hide yes)
 			(show_name yes)
@@ -6806,7 +6806,7 @@
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
@@ -7088,7 +7088,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 48.26 102.87 0)
 			(hide yes)
 			(show_name yes)
@@ -7121,7 +7121,7 @@
 				)
 			)
 		)
-		(property "Mouser" "603-RC0805FR-071ML"
+		(property "Mouser" "0805W8F1004T5E   "
 			(at 48.26 102.87 0)
 			(hide yes)
 			(show_name yes)
@@ -7132,7 +7132,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C107700"
+		(property "LCSC" "C17514"
 			(at 48.26 102.87 0)
 			(hide yes)
 			(show_name yes)
@@ -7379,7 +7379,7 @@
 				)
 			)
 		)
-		(property "Mouser" "603-CC0805JRNPO9BN101"
+		(property "Mouser" "187-CL21C101JBANNNC"
 			(at 48.26 111.76 0)
 			(hide yes)
 			(show_name yes)
@@ -7390,7 +7390,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C62768"
+		(property "LCSC" "C1790"
 			(at 48.26 111.76 0)
 			(hide yes)
 			(show_name yes)
@@ -7800,7 +7800,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17515"
+		(property "LCSC" "C17673"
 			(at 160.02 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -7811,7 +7811,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF4701V"
+		(property "Mouser" "0805W8F4701T5E"
 			(at 160.02 78.74 0)
 			(hide yes)
 			(show_name no)
@@ -7979,7 +7979,7 @@
 				)
 			)
 		)
-		(property "Mouser" "649-10118192-0001LF"
+		(property "Mouser" "649-10171746-00021LF"
 			(at 49.53 72.39 0)
 			(hide yes)
 			(show_name no)
@@ -8628,7 +8628,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder"
 			(at 49.53 34.29 0)
 			(hide yes)
 			(show_name yes)
@@ -8661,7 +8661,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C135808"
+		(property "LCSC" "C96123"
 			(at 49.53 34.29 90)
 			(hide yes)
 			(show_name yes)
@@ -8672,7 +8672,7 @@
 				)
 			)
 		)
-		(property "Mouser" "J32MLB7476MPPDTJ"
+		(property "Mouser" "187-CL31A476MPHNNNE"
 			(at 49.53 34.29 90)
 			(hide yes)
 			(show_name yes)
@@ -9395,7 +9395,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 77.47 64.77 0)
 			(hide yes)
 			(show_name yes)
@@ -9428,7 +9428,7 @@
 				)
 			)
 		)
-		(property "Mouser" "603-RC0805FR-075K1L"
+		(property "Mouser" "0805W8F5101T5E "
 			(at 87.63 64.77 0)
 			(hide yes)
 			(show_name yes)
@@ -9439,7 +9439,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C84375"
+		(property "LCSC" "C27834"
 			(at 87.63 64.77 0)
 			(hide yes)
 			(show_name yes)
@@ -9925,7 +9925,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17515"
+		(property "LCSC" "C17673"
 			(at 173.99 63.5 0)
 			(hide yes)
 			(show_name no)
@@ -9936,7 +9936,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF4701V"
+		(property "Mouser" "0805W8F4701T5E"
 			(at 173.99 63.5 0)
 			(hide yes)
 			(show_name no)
@@ -10495,7 +10495,7 @@
 				)
 			)
 		)
-		(property "Mouser" "603-CC0805KKX5R7BB106"
+		(property "Mouser" "187-CL21A106KAYNNNE"
 			(at 68.58 35.56 0)
 			(hide yes)
 			(show_name yes)
@@ -10506,7 +10506,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C89827"
+		(property "LCSC" "C15850"
 			(at 68.58 35.56 0)
 			(hide yes)
 			(show_name yes)
@@ -10597,7 +10597,7 @@
 				)
 			)
 		)
-		(property "Mouser" ""
+		(property "Mouser" "0805W8F1001T5E"
 			(at 189.23 67.31 0)
 			(hide yes)
 			(show_name yes)
@@ -10608,7 +10608,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C17513"
 			(at 189.23 67.31 0)
 			(hide yes)
 			(show_name yes)
@@ -11087,7 +11087,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 87.63 55.88 0)
 			(hide yes)
 			(show_name yes)
@@ -11120,7 +11120,7 @@
 				)
 			)
 		)
-		(property "Mouser" "603-RC0805FR-075K1L"
+		(property "Mouser" "0805W8F5101T5E "
 			(at 87.63 55.88 0)
 			(hide yes)
 			(show_name yes)
@@ -11131,7 +11131,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C84375"
+		(property "LCSC" "C27834"
 			(at 87.63 55.88 0)
 			(hide yes)
 			(show_name yes)
@@ -11303,7 +11303,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17515"
+		(property "LCSC" "C17673"
 			(at 165.1 137.16 0)
 			(hide yes)
 			(show_name no)
@@ -11314,7 +11314,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF4701V"
+		(property "Mouser" "0805W8F4701T5E"
 			(at 165.1 137.16 0)
 			(hide yes)
 			(show_name no)

@@ -6363,7 +6363,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17512"
+		(property "LCSC" "C17379"
 			(at 173.99 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -6374,7 +6374,7 @@
 				)
 			)
 		)
-		(property "Mouser" "CRCW08051K20FKEA"
+		(property "Mouser" "0805W8F1201T5E"
 			(at 173.99 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -6468,7 +6468,7 @@
 				)
 			)
 		)
-		(property "Mouser" "CL21B104KBCNNNC"
+		(property "Mouser" "603-CC0805KRX7R9BB104"
 			(at 21.59 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -6479,7 +6479,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1711"
+		(property "LCSC" "C49678"
 			(at 21.59 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -6839,7 +6839,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17515"
+		(property "LCSC" "C17673"
 			(at 214.63 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -6850,7 +6850,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF4701V"
+		(property "Mouser" "0805W8F4701T5E"
 			(at 214.63 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -7101,7 +7101,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17515"
+		(property "LCSC" "C17673"
 			(at 234.95 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -7112,7 +7112,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF4701V"
+		(property "Mouser" "0805W8F4701T5E"
 			(at 234.95 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -7206,7 +7206,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17515"
+		(property "LCSC" "C17673"
 			(at 204.47 121.92 0)
 			(hide yes)
 			(show_name no)
@@ -7217,7 +7217,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF4701V"
+		(property "Mouser" "0805W8F4701T5E"
 			(at 204.47 121.92 0)
 			(hide yes)
 			(show_name no)
@@ -7311,7 +7311,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17515"
+		(property "LCSC" "C17673"
 			(at 214.63 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -7322,7 +7322,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF4701V"
+		(property "Mouser" "0805W8F4701T5E"
 			(at 214.63 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -7744,7 +7744,7 @@
 				)
 			)
 		)
-		(property "Mouser" "CL21B104KBCNNNC"
+		(property "Mouser" "603-CC0805KRX7R9BB104"
 			(at 63.5 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -7755,7 +7755,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1711"
+		(property "LCSC" "C49678"
 			(at 63.5 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -8109,7 +8109,7 @@
 				)
 			)
 		)
-		(property "Mouser" "CL21B104KBCNNNC"
+		(property "Mouser" "603-CC0805KRX7R9BB104"
 			(at 134.62 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -8120,7 +8120,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1711"
+		(property "LCSC" "C49678"
 			(at 134.62 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -8214,7 +8214,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17512"
+		(property "LCSC" "C17513"
 			(at 41.91 83.82 0)
 			(hide yes)
 			(show_name no)
@@ -8225,7 +8225,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF1001V"
+		(property "Mouser" "0805W8F1001T5E"
 			(at 41.91 83.82 0)
 			(hide yes)
 			(show_name no)
@@ -8319,7 +8319,7 @@
 				)
 			)
 		)
-		(property "Mouser" "CL21B104KBCNNNC"
+		(property "Mouser" "603-CC0805KRX7R9BB104"
 			(at 77.47 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -8330,7 +8330,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1711"
+		(property "LCSC" "C49678"
 			(at 77.47 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -8582,7 +8582,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17515"
+		(property "LCSC" "C17673"
 			(at 224.79 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -8593,7 +8593,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF4701V"
+		(property "Mouser" "0805W8F4701T5E"
 			(at 224.79 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -8766,7 +8766,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17515"
+		(property "LCSC" "C17673"
 			(at 204.47 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -8777,7 +8777,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF4701V"
+		(property "Mouser" "0805W8F4701T5E"
 			(at 204.47 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -9839,7 +9839,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17515"
+		(property "LCSC" "C17673"
 			(at 214.63 121.92 0)
 			(hide yes)
 			(show_name no)
@@ -9850,7 +9850,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF4701V"
+		(property "Mouser" "0805W8F4701T5E"
 			(at 214.63 121.92 0)
 			(hide yes)
 			(show_name no)
@@ -10179,7 +10179,7 @@
 				)
 			)
 		)
-		(property "Mouser" "CL21B104KBCNNNC"
+		(property "Mouser" "603-CC0805KRX7R9BB104"
 			(at 119.38 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -10190,7 +10190,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1711"
+		(property "LCSC" "C49678"
 			(at 119.38 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -10442,7 +10442,7 @@
 				)
 			)
 		)
-		(property "Mouser" "CL21B104KBCNNNC"
+		(property "Mouser" "603-CC0805KRX7R9BB104"
 			(at 91.44 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -10453,7 +10453,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1711"
+		(property "LCSC" "C49678"
 			(at 91.44 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -10547,7 +10547,7 @@
 				)
 			)
 		)
-		(property "Mouser" "CL21B104KBCNNNC"
+		(property "Mouser" "603-CC0805KRX7R9BB104"
 			(at 105.41 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -10558,7 +10558,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1711"
+		(property "LCSC" "C49678"
 			(at 105.41 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -10810,7 +10810,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17512"
+		(property "LCSC" "C17513"
 			(at 30.48 83.82 0)
 			(hide yes)
 			(show_name no)
@@ -10821,7 +10821,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF1001V"
+		(property "Mouser" "0805W8F1001T5E"
 			(at 30.48 83.82 0)
 			(hide yes)
 			(show_name no)
@@ -10915,7 +10915,7 @@
 				)
 			)
 		)
-		(property "Mouser" "CL21B104KBCNNNC"
+		(property "Mouser" "603-CC0805KRX7R9BB104"
 			(at 49.53 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -10926,7 +10926,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1711"
+		(property "LCSC" "C49678"
 			(at 49.53 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -11099,7 +11099,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17515"
+		(property "LCSC" "C17673"
 			(at 234.95 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -11110,7 +11110,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF4701V"
+		(property "Mouser" "0805W8F4701T5E"
 			(at 234.95 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -11441,7 +11441,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17515"
+		(property "LCSC" "C17673"
 			(at 204.47 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -11452,7 +11452,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF4701V"
+		(property "Mouser" "0805W8F4701T5E"
 			(at 204.47 68.58 0)
 			(hide yes)
 			(show_name no)
@@ -11546,7 +11546,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C17515"
+		(property "LCSC" "C17673"
 			(at 224.79 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -11557,7 +11557,7 @@
 				)
 			)
 		)
-		(property "Mouser" "ERJ-6ENF4701V"
+		(property "Mouser" "0805W8F4701T5E"
 			(at 224.79 93.98 0)
 			(hide yes)
 			(show_name no)
@@ -11810,7 +11810,7 @@
 				)
 			)
 		)
-		(property "Mouser" "CL21B104KBCNNNC"
+		(property "Mouser" "603-CC0805KRX7R9BB104"
 			(at 35.56 26.67 0)
 			(hide yes)
 			(show_name no)
@@ -11821,7 +11821,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C1711"
+		(property "LCSC" "C49678"
 			(at 35.56 26.67 0)
 			(hide yes)
 			(show_name no)
