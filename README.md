@@ -85,7 +85,7 @@ The CPLD's UART emulates the XR68C681 (MC68681) at the register level. The exist
 
 ### Simple010-specific changes
 
-**File:** `rosco/rosco_m68k/code/firmware/rosco_m68k_firmware/stage1/main1.c`
+#### Startup detection — `stage1/main1.c`
 
 At startup, after printing the standard CPU and memory information, the firmware reads the CPLD detection register and prints additional messages:
 
@@ -107,9 +107,21 @@ The combined value is `0xC1`. On the original XR68C681, this register is MISR (m
 
 > **Address note:** the CPLD's `uart_sel` is gated on `~LDS` (lower data strobe), so the access must target the **odd** byte address `0xF00005`. Reading even address `0xF00004` (upper data strobe / UDS) will not reach the CPLD.
 
-### SPI RX accelerator
+#### SPI RX accelerator — `stage1/blockdev/bbspi.c`
 
-The CPLD includes a hardware SPI byte-receive engine clocked at ~1.843 MHz (UART_CLK ÷ 2). Firmware triggers a receive by writing any value to `$F00008`, then polls the `spi_busy` flag in the status register (`$F00003` bit 2), then reads the received byte from `$F00008`. This reduces per-byte bus traffic from ~24 cycles to 2 cycles compared to bit-banging.
+The CPLD includes a hardware SPI byte-receive engine clocked at ~1.843 MHz (UART_CLK ÷ 2), reducing per-byte bus traffic from ~24 cycles to 2 cycles compared to bit-banging.
+
+`BBSPI_initialize()` detects the accelerator by reading `0xF00005` and caches the result in a `static bool cpld_spi_accel`. `BBSPI_recv_byte()` and `BBSPI_recv_buffer()` then dispatch on this flag:
+
+**Accelerated receive sequence (per byte):**
+
+| Step | Action | Address |
+|------|--------|---------|
+| 1 | Write any value to SPIRX register — triggers one 8-bit receive | `0xF00009` (write) |
+| 2 | Poll SRA bit 2 (`spi_busy`) until clear | `0xF00003` (read) |
+| 3 | Read received byte from SPIRX register | `0xF00009` (read) |
+
+Send operations (`BBSPI_send_byte`, `BBSPI_send_buffer`) are unchanged — they continue to bit-bang through the CPLD GPIO, which is correct since the SD card protocol is heavily read-biased and transmit calls are infrequent. On original rosco hardware `cpld_spi_accel` is `false` and both receive functions fall back to the existing bit-bang asm routines in `dua_spi_asm.asm`.
 
 ## Parts and ordering
 
