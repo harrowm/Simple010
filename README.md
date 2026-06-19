@@ -2,6 +2,8 @@
 
 A 68010 single-board computer based on the [rosco_m68k r2](https://github.com/rosco-m68k/rosco_m68k) design. Simple010 replaces the six discrete glue-logic ICs from that design with a single **ATF1508AS PLCC84 CPLD**, reducing board complexity while adding hardware SPI acceleration for SD card access.
 
+![Simple010 board](design/images/Simple010_board.png)
+
 ## Hardware overview
 
 | Item | Detail |
