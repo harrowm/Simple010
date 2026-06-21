@@ -2,7 +2,7 @@
 
 A 68010 single-board computer based on the [rosco_m68k r2](https://github.com/rosco-m68k/rosco_m68k) design. Simple010 replaces the six discrete glue-logic ICs from that design with a single **ATF1508AS PLCC84 CPLD**, reducing board complexity while adding hardware SPI acceleration for SD card access.
 
-![Simple010 board](design/images/Simple010_board.png)
+![Simple010 board](design/Simple010/images/Simple010_board.png)
 
 ## Hardware overview
 
@@ -41,12 +41,15 @@ Resource utilisation: **122/128 macro cells (95%)**.
 ## Repository layout
 
 ```
-design/          KiCad 10 schematic and PCB
-  Simple010.kicad_sch   top-level (references four sub-sheets)
-  CPU.kicad_sch         MC68010P, oscillator, expansion connector
-  Memory.kicad_sch      SRAM, ROM, write-enable jumper
-  CPLD.kicad_sch        ATF1508AS, JTAG header, LEDs, pull-ups
-  USB.kicad_sch         MCP2221A, SD card, reset supervisor, power LEDs
+design/
+  Simple010/            KiCad 10 schematic and PCB (1 MB SRAM)
+    Simple010.kicad_sch   top-level (references four sub-sheets)
+    CPU.kicad_sch         MC68010P, oscillator, expansion connector
+    Memory.kicad_sch      SRAM, ROM, write-enable jumper
+    CPLD.kicad_sch        ATF1508AS, JTAG header, LEDs, pull-ups
+    USB.kicad_sch         MCP2221A, SD card, reset supervisor, power LEDs
+    production/           Gerbers, BOM, position file
+  Simple010-16/         KiCad 10 schematic and PCB (16 MB SRAM variant)
   datasheets/           component datasheets and parts index (INDEX.md)
 
 code/cpld/       ATF1508AS Verilog RTL and testbench
